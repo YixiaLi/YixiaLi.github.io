@@ -69,7 +69,7 @@ content:
         description: | # this will include new lines to allow paragraphs
           > MSc in Data Science and Analytics \
           [Department of Applied Mathematics](https://www.polyu.edu.hk/ama/) \
-          GPA: 3.68/4.0 \
+          GPA: 3.76/4.0 \
           Expected to graduate in 2023.03
 
       - layout: left
@@ -122,7 +122,7 @@ content:
 
       - layout: left
         title: GZHU 
-        sub_title: Undergraduate Research Assistant at <a href="https://ses.gzhu.edu.cn/">School of Economics and Statistics</a>
+        sub_title: Undergraduate Research Assistant at <a href="http://ses.gzhu.edu.cn/info/1113/2173.htm">Department of Statistics</a>
         caption: Mar 2020 - Nov 2020
         # quote: >
         description: | # this will include new lines to allow paragraphs
