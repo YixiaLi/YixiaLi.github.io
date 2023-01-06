@@ -116,8 +116,8 @@ content:
           - Task-oriented Dialogue System Development \
           R&D of the intelligent ordering dialogue system in Cantonese medical scenario ([Demo](https://x1a-alioss.oss-cn-shenzhen.aliyuncs.com/OrderBot_v0_demo.mov)).
 
-          - Automatic Poll Generation for Social Media Posts \
-          Research on the automatic extraction of hot topics and opinions from social media as poll questions. The first social media polling dataset in English language domain *RedditPolls* is collected. A multi-task, multi-objective poll generation model is proposed to solve the task.
+          - Automatic Poll Generation for Social Media Posts (will be submitted to *TKDE 2023*)\
+          Research on the automatic poll generation from social media. The first English social media polling dataset *RedditPolls* is collected. A multi-task, multi-objective poll generation model is proposed to solve the task, and its effectiveness has been tested on both English and Chinese datasets.
       
 
       - layout: left
