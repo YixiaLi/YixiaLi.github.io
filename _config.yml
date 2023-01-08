@@ -117,7 +117,7 @@ content:
           R&D of the intelligent ordering dialogue system in Cantonese medical scenario ([Demo](https://x1a-alioss.oss-cn-shenzhen.aliyuncs.com/OrderBot_v0_demo.mov)).
 
           - Automatic Poll Generation for Social Media Posts (will be submitted to *TKDE 2023*)\
-          Research on the automatic poll generation from social media. The first English social media polling dataset *RedditPolls* is collected. A multi-task, multi-objective poll generation model is proposed to solve the task, and its effectiveness has been tested on both English and Chinese datasets.
+          Research on the automatic poll generation from social media. The first English social media polling dataset *RedditPolls* is collected. A multi-task, multi-objective poll generation model is proposed to solve the task. The proposed model achieved Rouge-1 scores of 42.98 and 48.08 on English and Chinese datasets, respectively, which is an improvement of 11.57 over the SOTA model for Chinese.
       
 
       - layout: left
