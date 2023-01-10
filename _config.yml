@@ -69,8 +69,7 @@ content:
         description: | # this will include new lines to allow paragraphs
           > MSc in Data Science and Analytics \
           [Department of Applied Mathematics](https://www.polyu.edu.hk/ama/) \
-          GPA: 3.76/4.0 \
-          Expected to graduate in 2023.03
+          GPA: 3.76/4.0
 
       - layout: left
         title: Guangzhou University (GZHU)
