@@ -142,15 +142,15 @@ content:
           
           - Network Topology Study
 
-          - Network Node & Edge Protection (*DependSys 2019*)
+          - Network Node & Edge Protection (*[DependSys 2019](https://link.springer.com/chapter/10.1007/978-981-15-1304-6_37)*)
           
 
   - title: Publications
     layout: text
     content: | # this will include new lines to allow paragraphs
-      - Yixia Li, Shudong Li, Yanshan Chen, Peiyan He, Xiaobo Wu & Weihong Han \
+      - **Yixia Li**, Shudong Li, Yanshan Chen, Peiyan He, Xiaobo Wu & Weihong Han \
       [Electric Power Grid Invulnerability Under Intentional Edge-Based Attacks](https://link.springer.com/chapter/10.1007/978-981-15-1304-6_37) \
-      DependSys 2019
+      *DependSys 2019*
 
   - title: Honors and Awards
     layout: text
