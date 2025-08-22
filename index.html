@@ -43,6 +43,22 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        /* Global link styles */
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        a:visited {
+            color: var(--primary);
+        }
+
         body {
             background-color: var(--section-bg);
             color: var(--text);
@@ -949,6 +965,12 @@
                 <h2>Latest News</h2>
             </div>
             <div class="news-container" id="newsContainer">
+                <div class="news-item" data-date="2025-08-20">
+                    <div class="news-date">[2025.08.20]</div>
+                    <div class="news-content">
+                        One paper accepted to EMNLP 2025 (G2)
+                    </div>
+                </div>
                 <div class="news-item" data-date="2025-05-15">
                     <div class="news-date">[2025.05.26]</div>
                     <div class="news-content">
