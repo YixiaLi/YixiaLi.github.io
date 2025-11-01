@@ -162,6 +162,64 @@
             border-left: 3px solid #ccc;
             padding-left: 15px;
         }
+
+        /* === Mobile: only slightly smaller fonts & borders, keep layout === */
+        @media (max-width: 600px) {
+        /* 全局轻缩 */
+        body {
+            padding: 28px 16px; /* 原 40/20 */
+        }
+        .container {
+            padding: 42px 56px; /* 原 60/80 */
+            box-shadow: 0 0 12px rgba(0,0,0,0.06); /* 更轻的阴影 */
+        }
+
+        /* 边框更细 */
+        header {
+            border-bottom-width: 1px;   /* 原 2px */
+            padding-bottom: 10px;       /* 原 15px */
+            margin-bottom: 30px;        /* 原 40px */
+        }
+
+        /* 字号整体小一点（约 10–15%） */
+        h1 { font-size: 40px; }       /* 原 48px */
+        .degree { font-size: 18px; }  /* 原 20px */
+
+        .contact-info {
+            margin-top: -40px;          /* 原 -50px */
+            font-size: 13px;            /* 原 14px */
+            line-height: 1.7;
+        }
+        .contact-info a {
+            overflow-wrap: anywhere;    /* 防止长链接溢出 */
+        }
+
+        h2 {
+            font-size: 14px;            /* 原 16px */
+            letter-spacing: 2px;        /* 原 3px */
+            margin-bottom: 16px;        /* 原 20px */
+        }
+
+        section { margin-bottom: 34px; } /* 原 45px */
+
+        .entry { margin-bottom: 20px; }
+        .entry-title    { font-size: 14px; } /* 原 15px */
+        .entry-subtitle { font-size: 13px; } /* 原 14px */
+        .entry-location { font-size: 13px; } /* 原 14px */
+        .entry-details  { font-size: 13px; margin-left: 16px; } /* 原 14px / 20px */
+        .entry-info     { font-size: 13px; }
+
+        .publication-item { font-size: 13px; margin-bottom: 12px; }
+        .reviewer-list, .award-list { font-size: 13px; margin-left: 16px; }
+        .reviewer-list li, .award-list li { margin-bottom: 6px; }
+
+        /* 右侧日期保持在同一行，必要时断词以避免横向滚动 */
+        .award-list li span[style*="float: right"] {
+            white-space: nowrap; overflow-wrap: anywhere;
+        }
+        }
+
+
     </style>
 </head>
 <body>
