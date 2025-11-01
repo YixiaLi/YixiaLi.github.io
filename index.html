@@ -1,1786 +1,437 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yixia Li (李乙侠)</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Yixia Li - Ph.D.</title>
     <style>
-        :root {
-            --primary: #2563eb;
-            --secondary: #3b82f6;
-            --accent: #1e40af;
-            --light: #f8fafc;
-            --dark: #0f172a;
-            --gray: #64748b;
-            --light-gray: #e2e8f0;
-            --card-bg: #ffffff;
-            --text: #0f172a;
-            --text-secondary: #475569;
-            --section-bg: #f1f5f9;
-            --transition: all 0.3s ease;
-            --header-height: 70px; /* 定义导航栏高度变量 */
-        }
-
-        .dark-mode {
-            --primary: #60a5fa;
-            --secondary: #3b82f6;
-            --accent: #93c5fd;
-            --light: #0f172a;
-            --dark: #f8fafc;
-            --gray: #94a3b8;
-            --light-gray: #1e293b;
-            --card-bg: #1e293b;
-            --text: #e2e8f0;
-            --text-secondary: #94a3b8;
-            --section-bg: #0f172a;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        /* Global link styles */
-        a {
-            color: var(--primary);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        a:hover {
-            color: var(--secondary);
-            text-decoration: underline;
-        }
-
-        a:visited {
-            color: var(--primary);
         }
 
         body {
-            background-color: var(--section-bg);
-            color: var(--text);
+            font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+            background-color: #f5f5f0;
+            color: #000;
             line-height: 1.6;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            /* 为平滑滚动到锚点预留导航栏空间 */
-            scroll-padding-top: var(--header-height);
+            padding: 40px 20px;
         }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Styles */
-        header {
-            background-color: var(--card-bg);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            left: 0; /* 确保在小屏幕上正确对齐 */
-            width: 100%; /* 确保宽度为100% */
-            z-index: 1000;
-            transition: transform 0.3s ease-in-out; /* 添加过渡效果 */
-            height: auto; /* 根据内容自适应高度 */
-        }
-
-        /* 新增：用于隐藏导航栏的类 */
-        header.header-hidden {
-            transform: translateY(-100%);
-        }
-
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0; /* 调整内边距以适应内容 */
-            min-height: var(--header-height); /* 确保导航栏有最小高度 */
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.8rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-            font-size: 1rem;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .theme-toggle {
-            background: none;
-            border: none;
-            color: var(--text);
-            cursor: pointer;
-            font-size: 1.2rem;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        .theme-toggle:hover {
-            background-color: var(--light-gray);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 6rem 0;
-            text-align: center;
-            border-bottom: 1px solid var(--light-gray);
-            background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('assets/IMG_5950.webp');
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-
-        .dark-mode .hero {
-            background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('assets/IMG_5950.webp');
-            border-bottom-color: var(--light-gray);
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1, .hero h2, .hero .hero-description {
-            color: white;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
-        }
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 0.75rem;
-        }
-         .hero h2 {
-            font-size: 1.6rem;
-            font-weight: 400;
-            margin-bottom: 1.5rem;
-        }
-        .hero .hero-description {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            color: #f0f0f0;
-        }
-
-        .research-tags {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-bottom: 2rem;
-        }
-
-        .tag {
-            background-color: rgba(37, 99, 235, 0.8);
-            color: white;
-            padding: 0.5rem 1.2rem;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: var(--transition);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        .tag:hover {
-            transform: translateY(-2px);
-            background-color: rgba(37, 99, 235, 1);
-            box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
-        }
-
-        .hero .contact-links a {
-            background-color: transparent;
-            color: white;
-            border: none;
-            width: 42px;
-            height: 42px;
-            font-size: 1.5rem;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-        }
-
-        .hero .contact-links a:hover {
-            background-color: rgba(255,255,255,0.15);
-            transform: translateY(-2px);
-            box-shadow: none;
-        }
-
-        /* General Contact Links (e.g., in footer, if any) */
-        .contact-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 42px;
-            height: 42px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 50%;
-            transition: var(--transition);
-            text-decoration: none;
-            font-size: 1.2rem;
-        }
-
-        .contact-links a:hover {
-            background-color: var(--accent);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
-        }
-
-        /* Section Styles */
-        section {
-            padding: 2rem 0;
-        }
-
-        section:not(:last-child) {
-            margin-bottom: 0.5rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .section-header h2 {
-            font-size: 2rem;
-            color: var(--text);
-            position: relative;
-            display: inline-block;
-            padding-bottom: 0.5rem;
-        }
-
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--primary);
-            border-radius: 2px;
-        }
-
-        /* Generic List Styles for Awards, Services, (Honors) */
-        .list-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .list-item {
-            background: var(--card-bg);
-            border-radius: 8px;
-            padding: 0.8rem 1rem;
-            margin-bottom: 0.6rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            transition: var(--transition);
-        }
-        .list-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-        .list-item p {
-            margin-bottom: 0.2rem;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-        .list-item strong {
-            color: var(--text);
-        }
-         .list-item .date {
-            color: var(--primary);
-            font-weight: 600;
-            margin-right: 0.5rem;
-            font-size: 0.85rem;
-        }
-
-        /* News Section */
-        .news-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .news-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 0.75rem;
-            padding: 0.8rem 1rem;
-            border-radius: 6px;
-            background-color: var(--card-bg);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-        }
-
-        .news-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        .news-date {
-            min-width: 85px;
-            font-weight: 500;
-            color: var(--primary);
-            font-size: 0.85rem;
-            margin-right: 0.75rem;
-            line-height: 1.5;
-        }
-
-        .news-content {
-            flex: 1;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        .news-content a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .news-content a:hover {
-            text-decoration: underline;
-        }
-        .news-toggle-btn {
-            display: block;
-            margin: 1.5rem auto 0 auto;
-            padding: 0.5rem 1rem;
-            font-size: 0.9rem;
-            color: var(--primary);
-            background-color: transparent;
-            border: 1px solid var(--primary);
-            border-radius: 20px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        .news-toggle-btn:hover {
-            background-color: rgba(37, 99, 235, 0.1);
-        }
-        .old-news-item.hidden-news {
-            display: none;
-        }
-
-        /* Education & Experience */
-        .education-container, .research-container {
             max-width: 900px;
             margin: 0 auto;
+            background: white;
+            padding: 60px 80px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
         }
 
-        .edu-item, .research-item {
-            background: var(--card-bg);
-            border-radius: 8px;
-            padding: 1.2rem 1.5rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
+        header {
+            border-bottom: 2px solid #000;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
         }
 
-        .edu-item:hover, .research-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        h1 {
+            font-size: 48px;
+            font-weight: normal;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
         }
 
-        .edu-header, .research-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 0.75rem;
-            flex-wrap: wrap;
+        .degree {
+            font-size: 20px;
+            font-weight: normal;
+            margin-left: 10px;
         }
 
-        .edu-title, .research-title {
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: var(--text);
+        .contact-info {
+            text-align: right;
+            margin-top: -50px;
+            font-size: 14px;
+            line-height: 1.8;
         }
 
-        .edu-duration, .research-duration {
-            color: var(--primary);
-            font-weight: 500;
-            font-size: 0.9rem;
-            white-space: nowrap;
-            margin-left: 1rem;
-            padding-top: 0.1rem;
-        }
-
-        .edu-subtitle, .research-subtitle {
-            color: var(--primary);
-            font-weight: 500;
-            margin-bottom: 0.6rem;
-            font-size: 1rem;
-        }
-
-        .edu-details, .research-details {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            font-size: 0.9rem;
-        }
-
-        .edu-details ul, .research-details ul {
-            padding-left: 1.2rem;
-            margin-top: 0.6rem;
-        }
-
-        .edu-details li, .research-details li {
-            margin-bottom: 0.4rem;
-        }
-
-        .edu-details a, .research-details a {
-            color: var(--primary);
+        .contact-info a {
+            color: #000;
             text-decoration: none;
-            transition: var(--transition);
         }
 
-        .edu-details a:hover, .research-details a:hover {
+        .contact-info a:hover {
             text-decoration: underline;
         }
 
-        /* Publications */
-        .pub-filters {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
+        section {
+            margin-bottom: 45px;
         }
 
-        .filter-btn {
-            padding: 0.6rem 1.5rem;
-            background-color: var(--card-bg);
-            border: 1px solid var(--light-gray);
-            border-radius: 30px;
-            color: var(--text);
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 500;
-            font-size: 0.95rem;
+        h2 {
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
         }
 
-        .filter-btn.active, .filter-btn:hover {
-            background-color: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .pub-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1rem;
-        }
-
-        .pub-card {
-            background: var(--card-bg);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            cursor: pointer;
+        .entry {
+            margin-bottom: 25px;
             position: relative;
         }
 
-        .pub-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-        }
-        .pub-card .expand-icon {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            font-size: 0.8rem;
-            color: var(--gray);
-            background-color: rgba(255,255,255,0.8);
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.2s ease-in-out;
-            pointer-events: none;
-        }
-        .dark-mode .pub-card .expand-icon {
-            background-color: rgba(0,0,0,0.6);
-            color: var(--light-gray);
-        }
-        .pub-card:hover .expand-icon {
-            opacity: 1;
-        }
-
-        .pub-img-container {
-            width: 100%;
-            height: 180px;
-            overflow: hidden;
-            background-color: var(--light-gray); /* Fallback background */
-            display: flex; /* For centering placeholder text if needed */
-            align-items: center; /* For centering placeholder text if needed */
-            justify-content: center; /* For centering placeholder text if needed */
-        }
-        .pub-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-bottom: 1px solid var(--light-gray);
-        }
-
-        .pub-content {
-            padding: 1.5rem;
-            flex: 1;
+        .entry-header {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
         }
 
-        .pub-title {
-            font-size: 1.15rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text);
-        }
-
-        .pub-authors {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
-        }
-         .pub-authors strong {
+        .entry-title {
             font-weight: bold;
-            color: var(--primary);
+            font-size: 15px;
         }
 
-        .pub-details {
-            color: var(--primary);
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
+        .entry-location {
+            text-align: right;
+            font-size: 14px;
         }
 
-        .pub-links { /* These are the links on the card itself */
-            display: flex;
-            gap: 0.3rem; /* MODIFIED from 0.6rem */
-            flex-wrap: wrap;
-            margin-bottom: -0.6rem; /* MODIFIED from 1rem */
-            margin-top: auto; /* Push links to the bottom */
+        .entry-subtitle {
+            font-style: italic;
+            font-size: 14px;
+            margin-bottom: 3px;
         }
 
-        .pub-links a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.2rem; /* MODIFIED from 0.3rem */
-            color: var(--primary);
-            text-decoration: none;
-            font-size: 0.75rem;
-            font-weight: 500;
-            transition: var(--transition);
-            padding: 0.25rem 0.5rem; /* MODIFIED from 0.3rem 0.6rem */
-            border-radius: 15px;
-            background-color: rgba(37, 99, 235, 0.08);
-            border: 1px solid transparent;
+        .entry-details {
+            font-size: 14px;
+            margin-left: 20px;
         }
 
-        .pub-links a:hover {
-            background-color: rgba(37, 99, 235, 0.15);
-            border-color: rgba(37,99,235,0.2);
-        }
-
-        /* Gallery Section */
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1rem;
-        }
-        .gallery-item {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            aspect-ratio: 1 / 1; /* Maintain square aspect ratio */
-            background-color: var(--light-gray); /* Fallback background */
-        }
-        .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-        }
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* Modal Styles (for Publications and Gallery Lightbox) */
-        .modal, .lightbox {
-            display: none;
-            position: fixed;
-            z-index: 1001;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.7);
-            padding-top: 60px; /* Default padding */
-            animation: fadeIn 0.3s;
-        }
-
-        @keyframes fadeIn {
-            from {opacity: 0;}
-            to {opacity: 1;}
-        }
-
-        .modal-content {
-            background-color: var(--card-bg);
-            margin: 5% auto;
-            padding: 25px;
-            border: 1px solid var(--light-gray);
-            width: 80%;
-            max-width: 700px;
-            border-radius: 10px;
-            position: relative;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            animation: slideIn 0.3s;
-            max-height: 85vh; /* Limit modal height */
-            overflow-y: auto; /* Allow scrolling within modal content */
-        }
-
-        @keyframes slideIn {
-            from {transform: translateY(-50px); opacity: 0;}
-            to {transform: translateY(0); opacity: 1;}
-        }
-
-        .close-btn, .lightbox-close-btn {
-            color: var(--gray);
-            position: absolute;
-            top: 15px;
-            right: 25px;
-            font-size: 28px;
-            font-weight: bold;
-            transition: var(--transition);
-            z-index: 10; /* Ensure close button is above content */
-        }
-        .close-btn:hover, .close-btn:focus,
-        .lightbox-close-btn:hover, .lightbox-close-btn:focus {
-            color: var(--primary);
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        #modalImage {
-            width: 100%;
-            max-height: 300px;
-            object-fit: contain;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            background-color: var(--light-gray); /* Fallback if image doesn't load */
-        }
-        .modal-content h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            margin-top: 0; /* Reset margin for title */
-        }
-        .modal-content h4 {
-            color: var(--text);
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
-            border-bottom: 1px solid var(--light-gray);
-            padding-bottom: 0.3rem;
-        }
-        .modal-content p, .modal-content div#modalLinks {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
+        .entry-info {
+            font-size: 14px;
             line-height: 1.6;
-        }
-        #modalTldr, #modalAbstract {
-            white-space: pre-wrap; /* Preserve line breaks in abstract/tldr */
-            word-break: break-word; /* Prevent long words from overflowing */
-        }
-        #modalLinks a { margin-right: 10px; margin-bottom: 10px; display: inline-block; }
-        #modalLinks { margin-bottom: 1.5rem; }
-
-
-        /* Lightbox Specific */
-        .lightbox {
-             padding-top: 20px; /* Adjust padding for lightbox */
-        }
-        .lightbox-content {
-            margin: auto;
-            display: block;
-            width: auto;
-            max-width: 90%;
-            max-height: 85vh;
-            animation: zoomIn 0.3s;
-            border-radius: 5px; /* Optional: add border-radius to lightbox image */
-        }
-         @keyframes zoomIn {
-            from {transform: scale(0.8); opacity: 0;}
-            to {transform: scale(1); opacity: 1;}
+            margin-bottom: 5px;
+            margin-left: 0px;
+            font-weight: normal;
         }
 
-        .lightbox .prev, .lightbox .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 16px;
-            margin-top: -22px;
-            color: white;
+        .entry-details li {
+            margin-bottom: 3px;
+        }
+
+        .publication-item {
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-align: justify;
+            line-height: 1.5;
+        }
+
+        .publication-item .authors {
+            font-weight: normal;
+        }
+
+        .publication-item .author-highlight {
             font-weight: bold;
-            font-size: 20px;
-            transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-            background-color: rgba(0,0,0,0.5);
-        }
-        .lightbox .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
-        .lightbox .prev:hover, .lightbox .next:hover {
-            background-color: rgba(0,0,0,0.8);
         }
 
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: var(--light-gray);
-            padding: 2.5rem 0;
-            text-align: center;
+        .publication-item .title {
+            font-style: italic;
         }
 
-        .dark-mode footer {
-            background-color: #020617; /* Even darker for dark mode footer */
-            color: var(--gray);
+        .publication-item .venue {
+            font-weight: normal;
         }
 
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-         .footer-content h3 {
-            color: white; /* Ensure footer heading is visible in light mode */
-            margin-bottom: 0.5rem;
-        }
-         .dark-mode .footer-content h3 {
-             color: var(--dark); /* Use --dark which is light text in dark mode */
+        .publication-item .link {
+            font-weight: normal;
         }
 
-         .footer-content p {
-             margin-bottom: 1.5rem;
-             color: var(--light-gray); /* Light gray for light mode footer text */
-        }
-         .dark-mode .footer-content p {
-             color: var(--gray); /* Gray for dark mode footer text */
+        .reviewer-list, .award-list {
+            font-size: 14px;
+            margin-left: 20px;
         }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1.5rem;
+        .reviewer-list li, .award-list li {
+            margin-bottom: 8px;
         }
 
-        .footer-links a {
-            color: #93c5fd; /* Light blue for links in light mode footer */
-            text-decoration: none;
-            transition: var(--transition);
+        /* Template styles for easy content addition */
+        .template-entry {
+            display: none;
+            opacity: 0.5;
+            border-left: 3px solid #ccc;
+            padding-left: 15px;
         }
-
-        .footer-links a:hover {
-            color: white; /* White on hover in light mode footer */
-        }
-        .dark-mode .footer-links a:hover {
-            color: var(--dark); /* --dark (light text) on hover in dark mode footer */
-        }
-
-        .copyright {
-            font-size: 0.9rem;
-            margin-top: 1.5rem;
-            color: var(--light-gray);
-        }
-         .dark-mode .copyright {
-            color: var(--gray);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            :root {
-                --header-height: auto; /* Allow header to resize on mobile */
-            }
-            .navbar {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem 0; /* Ensure consistent padding */
-                min-height: 0; /* Reset min-height for stacked layout */
-            }
-            .nav-right {
-                width: 100%;
-                justify-content: space-between;
-            }
-            .nav-links {
-                gap: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .hero { padding: 4rem 0; }
-            .hero h1 { font-size: 2.2rem; }
-            .hero h2 { font-size: 1.4rem; }
-            .hero .hero-description { font-size: 1rem; }
-
-            .edu-header, .research-header {
-                flex-direction: column;
-                gap: 0.5rem;
-                align-items: flex-start;
-            }
-            .edu-duration, .research-duration {
-                margin-left: 0;
-                font-size: 0.9rem;
-            }
-            .news-item {
-                flex-direction: column;
-                gap: 0.8rem;
-                align-items: flex-start;
-            }
-            .news-date {
-                margin-bottom: 0.5rem; /* Ensure space below date when stacked */
-                min-width: auto;
-            }
-            .modal-content { width: 90%; padding: 20px; margin-top: 20px; margin-bottom: 20px;}
-            .gallery-container { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));}
-            .lightbox { padding-top: 10px; } /* Reduce padding on mobile for lightbox */
-        }
-
-        @media (max-width: 480px) {
-            .nav-links { font-size: 0.9rem; gap: 0.8rem; }
-            .pub-filters { gap: 0.5rem; }
-            .filter-btn { padding: 0.5rem 1rem; font-size: 0.85rem; }
-            .pub-container { grid-template-columns: 1fr; } /* Single column for smallest screens */
-            .contact-links a { width: 38px; height: 38px; font-size: 1rem;}
-            .research-tags .tag { padding: 0.4rem 1rem; font-size: 0.8rem;}
-            .section-header h2 { font-size: 1.8rem; }
-            .gallery-container { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));}
-            .hero { padding: 3rem 0; }
-            .hero h1 { font-size: 2rem; }
-            .hero h2 { font-size: 1.3rem; }
-            .modal-content { padding: 15px; }
-            .close-btn, .lightbox-close-btn { top: 10px; right: 15px; font-size: 24px; }
-        }
-
-        .hidden { display: none !important; }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <nav class="navbar">
-                <div class="logo">Yixia Li</div>
-                <div class="nav-right">
-                    <div class="nav-links">
-                        <a href="#about">About</a>
-                        <a href="#news">News</a>
-                        <a href="#publications">Publications</a>
-                        <a href="#education">Education</a>
-                        <a href="#research">Research</a>
-                        <a href="#services">Services</a>
-                        <a href="#awards">Awards</a>
-                        <a href="#gallery">Gallery</a>
-                    </div>
-                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                        <i class="fas fa-moon"></i>
-                    </button>
+    <div class="container">
+        <header>
+            <h1>YIXIA LI <span class="degree">Ph.D.</span></h1>
+            <div class="contact-info">
+                <a href="https://scholar.google.com/citations?user=LrYjRNYAAAAJ&hl">Google Scholar</a><br>
+                <a href="mailto:liyixia@me.com">liyixia@me.com</a><br>
+                <a href="https://liyixia.me">https://liyixia.me</a>
+            </div>
+        </header>
+
+        <section id="education">
+            <h2>Education</h2>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">Southern University of Science and Technology</div>
+                    <div class="entry-location">Shenzhen, China</div>
                 </div>
-            </nav>
-        </div>
-    </header>
-
-    <section class="hero" id="about">
-        <div class="hero-content">
-            <h1>Yixia Li (李乙侠)</h1>
-            <h2>Ph.D. Candidate at SUSTech</h2>
-
-            <div class="research-tags">
-                <span class="tag">Efficient LLMs</span>
-                <span class="tag">Controllable Generation</span>
-                <span class="tag">Multi-Modal</span>
+                <div class="entry-header">
+                    <div class="entry-subtitle">Ph.D. in Mathematics</div>
+                    <div class="entry-location">2023 - 2027</div>
+                </div>
+                <ul class="entry-details">
+                    <li>Supervisor: <a href="https://ghchen.me">Dr. Guanhua Chen</a>.</li>
+                    <li>Research area: Efficient Methods in LLMs and Reasoning Models.</li>
+                </ul>
             </div>
 
-            <p class="hero-description">👋 Hi there, I'm Yixia Li, a second-year Ph.D. student at SUSTech. My research interest mainly focuses on Efficient LLMs, Controllable Generation and Multi-Modal.</p>
-
-            <div class="contact-links">
-                <a href="mailto:liyixia@me.com" title="Email"><i class="fas fa-envelope"></i></a>
-                <a href="https://scholar.google.com/citations?user=LrYjRNYAAAAJ&hl=en&authuser=1" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
-                <a href="https://github.com/X1AOX1A" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/liyixia" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <section id="news">
-        <div class="container">
-            <div class="section-header">
-                <h2>Latest News</h2>
-            </div>
-            <div class="news-container" id="newsContainer">
-                <div class="news-item" data-date="2025-08-20">
-                    <div class="news-date">[2025.08.20]</div>
-                    <div class="news-content">
-                        One paper accepted to EMNLP 2025 (G2)
-                    </div>
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">The Hong Kong Polytechnic University</div>
+                    <div class="entry-location">Hong Kong, China</div>
                 </div>
-                <div class="news-item" data-date="2025-05-15">
-                    <div class="news-date">[2025.05.26]</div>
-                    <div class="news-content">
-                        I will start my internship with the GenAI group at Microsoft Research Asia in June
-                    </div>
+                <div class="entry-header">
+                    <div class="entry-subtitle">M.Sc. in Computer Science (Data Science) with Distinction</div>
+                    <div class="entry-location">2021 - 2023</div>
                 </div>
-                <div class="news-item" data-date="2025-05-15">
-                    <div class="news-date">[2025.05.15]</div>
-                    <div class="news-content">
-                        Two papers accepted to ACL 2025 (<a href="https://www.arxiv.org/abs/2504.13237" target="_blank">ImPart</a>, <a href="https://arxiv.org/abs/2408.01323" target="_blank">FANNO</a>)
-                    </div>
-                </div>
-                <div class="news-item" data-date="2025-01-23">
-                    <div class="news-date">[2025.01.23]</div>
-                    <div class="news-content">
-                        Two papers accepted to NAACL 2025 (<a href="https://openreview.net/forum?id=rPZ1IrgSVd" target="_blank">MiLoRA</a>, <a href="https://openreview.net/forum?id=KmRjOLJISJ" target="_blank">LayAlign</a>)
-                    </div>
-                </div>
-                <div class="news-item" data-date="2024-11-29">
-                    <div class="news-date">[2024.11.29]</div>
-                    <div class="news-content">
-                        One paper accepted to TNNLS 2024 (<a href="https://ieeexplore.ieee.org/iel8/5962385/6104215/10829745.pdf" target="_blank">UniPoll</a>)
-                    </div>
-                </div>
-                <div class="news-item" data-date="2024-09-26">
-                    <div class="news-date">[2024.09.26]</div>
-                    <div class="news-content">
-                        One paper accepted to NeurIPS 2024 (<a href="https://openreview.net/forum?id=65UoJ0z7Kp" target="_blank">SeTAR</a>)
-                    </div>
-                </div>
-                <div class="news-item" data-date="2024-05-16"> <div class="news-date">[2024.05.16]</div>
-                    <div class="news-content">
-                        One paper accepted to ACL 2024 (<a href="https://aclanthology.org/2024.findings-acl.36/" target="_blank">PACIT</a>)
-                    </div>
-                </div>
-                <div class="news-item" data-date="2024-04-19"> <div class="news-date">[2024.04.19]</div>
-                    <div class="news-content">
-                        One paper accepted to Journal of Language Resources and Evaluation (<a href="https://link.springer.com/article/10.1007/s10579-024-09744-w" target="_blank">Cantonese NLP Survey</a>)
-                    </div>
-                </div>
-            </div>
-            <button id="toggleNewsBtn" class="news-toggle-btn">Expand Older News</button>
-        </div>
-    </section>
-
-    <section id="publications">
-        <div class="container">
-            <div class="section-header">
-                <h2>Publications</h2>
+                <ul class="entry-details">
+                    <li>Rank: Top 5%, GPA: 3.8/4.0.</li>
+                </ul>
             </div>
 
-            <div class="pub-filters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="conference">Conference</button>
-                <button class="filter-btn" data-filter="journal">Journal</button>
-                <button class="filter-btn" data-filter="preprint">Preprints</button>
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">Guangzhou University</div>
+                    <div class="entry-location">Guangzhou, China</div>
+                </div>
+                <div class="entry-header">
+                    <div class="entry-subtitle">B.Sc. in Statistics</div>
+                    <div class="entry-location">2017 - 2021</div>
+                </div>
+                <ul class="entry-details">
+                    <li>Rank: Top 5%, GPA: 3.7/4.0.</li>
+                </ul>
             </div>
 
-            <div class="pub-container">
-                <div
-                    class="pub-card"
-                    data-type="conference"
-                    data-title="ImPart: Importance-Aware Delta-Sparsification for Improved Model Compression and Merging in LLMs"
-                    data-img="assets/ImPart.webp"
-                    data-authors="Yan Yang*, <strong>Yixia Li*</strong>, Hongru Wang, Xuetao Wei, Jianqiao Yu, Yun Chen, Guanhua Chen"
-                    data-details="ACL 2025 Main (2025.05.15) | CCF-A"
-                    data-tldr="ImPart introduces importance-aware SVD-based delta sparsification, pruning singular vectors by relevance to preserve key task knowledge and enable efficient quantization and merging of many task-specific LLMs."
-                    data-abstract="With the proliferation of task-specific large language models, delta compression has emerged as a method to mitigate the resource challenges of deploying numerous such models by effectively compressing the delta model parameters. Previous delta-sparsification methods either remove parameters randomly or truncate singular vectors directly after singular value decomposition (SVD). However, these methods either disregard parameter importance entirely or evaluate it with too coarse a granularity. In this work, we introduce ImPart, a novel importance-aware delta sparsification approach. Leveraging SVD, it dynamically adjusts sparsity ratios of different singular vectors based on their importance, effectively retaining crucial task-specific knowledge even at high sparsity ratios. Experiments show that ImPart achieves state-of-the-art delta sparsification performance, demonstrating 2× higher compression ratio than baselines at the same performance level. When integrated with existing methods, ImPart sets a new state-of-the-art on delta quantization and model merging."
-                >
-                    <span class="expand-icon"><i class="fas fa-expand-alt"></i></span>
-                    <div class="pub-img-container">
-                        <img src="assets/ImPart.webp" alt="ImPart Paper Image" class="pub-img" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(45deg, #ff9a9e 0%, #fad0c4 100%)';">
-                    </div>
-                    <div class="pub-content">
-                        <h3 class="pub-title">ImPart: Importance-Aware Delta-Sparsification for Improved Model Compression and Merging in LLMs</h3>
-                        <div class="pub-authors">Yan Yang*, <strong>Yixia Li*</strong>, Hongru Wang, Xuetao Wei, Jianqiao Yu, Yun Chen, Guanhua Chen</div>
-                        <div class="pub-details">ACL 2025 Main (2025.05.15) | CCF-A</div>
-                        <div class="pub-links">
-                            <a href="https://www.arxiv.org/abs/2504.13237" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
-                            <a href="https://github.com/X1AOX1A/ImPart" target="_blank"><i class="fab fa-github"></i> Code</a>
-                        </div>
-                    </div>
+            <!-- Template for adding new education entries -->
+            <div class="entry template-entry">
+                <div class="entry-header">
+                    <div class="entry-title">[University Name]</div>
+                    <div class="entry-location">[Location]</div>
                 </div>
-
-                <div
-                    class="pub-card"
-                    data-type="conference"
-                    data-title="FANNO: Augmenting High-Quality Instruction Data with Open-Sourced LLMs Only"
-                    data-img="assets/FANNO.webp"
-                    data-authors="He Zhu, Yifan Ding, Yicheng Tao, Zhiwen Ruan, <strong>Yixia Li</strong>, Wenjia Zhang, Yun Chen, Guanhua Chen"
-                    data-details="ACL 2025 Findings (2025.05.15)"
-                    data-tldr="Fanno generates high-quality instruction data from open-source LLMs and unlabeled documents, without seed data. It produces diverse, complex datasets that match or exceed proprietary methods with fewer samples."
-                    data-abstract="Instruction tuning stands as a crucial advancement in leveraging large language models (LLMs) for enhanced task performance. However, the annotation of instruction datasets has traditionally been expensive and laborious, often relying on manual annotations or costly proprietary LLMs. Recent works explore approaches to synthesize data with open-sourced LLMs but require high-quality human-crafted seed data. In this work, we introduce , an end-to-end framework to synthesize high-quality instruction data with open-sourced LLMs and sampled unlabeled documents, eliminating the necessity for seed data. Starting from diverse pre-screened documents, the framework synthesizes complex and diverse high-quality instruction and response pairs in different stages. We propose a tagging-based prompt method to generate diverse and complex seed data and a UCB-based approach to augment more instruction data with the seed data. A novel Think Different prompt is proposed to address the distributional limitations of the seeds, further boosting the data diversity. Experiments prove that the can generate diverse and complex high-quality data even with a opensource small teacher model. The synthesized instruction data demonstrates performance that is comparable to, or even surpasses, baseline annotation methods with proprietary LLMs or open-sourced LLMs while requiring fewer instruction data samples."
-                >
-                    <span class="expand-icon"><i class="fas fa-expand-alt"></i></span>
-                    <div class="pub-img-container">
-                        <img src="assets/FANNO.webp" alt="FANNO Paper Image" class="pub-img" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(45deg, #ff9a9e 0%, #fad0c4 100%)';">
-                    </div>
-                    <div class="pub-content">
-                        <h3 class="pub-title">FANNO: Augmenting High-Quality Instruction Data with Open-Sourced LLMs Only</h3>
-                        <div class="pub-authors">He Zhu, Yifan Ding, Yicheng Tao, Zhiwen Ruan, <strong>Yixia Li</strong>, Wenjia Zhang, Yun Chen, Guanhua Chen</div>
-                        <div class="pub-details">ACL 2025 Findings (2025.05.15)</div>
-                        <div class="pub-links">
-                            <a href="https://openreview.net/forum?id=CULXUPIAi8&referrer=%5Bthe%20profile%20of%20Yixia%20Li%5D(%2Fprofile%3Fid%3D~Yixia_Li1)" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
-                            <a href="https://github.com/sustech-nlp/FANNO" target="_blank"><i class="fab fa-github"></i> Code</a>
-                        </div>
-                    </div>
+                <div class="entry-header">
+                    <div class="entry-subtitle">[Degree and Major]</div>
+                    <div class="entry-location">[Start Year] - [End Year]</div>
                 </div>
-
-                <div
-                    class="pub-card"
-                    data-type="conference"
-                    data-title="MiLoRA: Harnessing Minor Singular Components for Parameter-Efficient LLM Finetuning"
-                    data-img="assets/MiLoRA.webp"
-                    data-authors="Hanqing Wang, <strong>Yixia Li</strong>, Shuo Wang, Guanhua Chen, Yun Chen"
-                    data-details="NAACL 2025 Main (2025.01.23) | CCF-B"
-                    data-tldr="MiLoRA improves LoRA by using SVD to update minor singular components, preserving key knowledge and enhancing performance with reduced costs."
-                    data-abstract="Efficient finetuning of large language models (LLMs) aims to adapt the LLMs with reduced computational and memory cost. Previous LoRA-based approaches initialize the low-rank matrices with Gaussian distribution and zero values while keeping the original weight matrices frozen. However, the trainable model parameters optimized in an unguided subspace might interfere with the well-learned subspace of the pretrained weight matrices. In this paper, we propose MiLoRA, a simple yet effective LLM finetuning approach that only updates the minor singular components of the weight matrix while keeping the principal singular components frozen. It is observed that the minor matrix corresponds to the noisy or long-tail information, while the principal matrix contains important knowledge. The MiLoRA initializes the low-rank matrices within a subspace that is orthogonal to the principal matrix, thus the pretrained knowledge is expected to be well preserved. During finetuning, MiLoRA makes the most use of the less-optimized subspace for learning the labeled dataset. Extensive experiments on commonsense reasoning, math reasoning, instruction following and visual instruction following benchmarks present the superior performance of our method."
-                >
-                    <span class="expand-icon"><i class="fas fa-expand-alt"></i></span>
-                    <div class="pub-img-container">
-                        <img src="assets/MiLoRA.webp" alt="MiLoRA Paper Image" class="pub-img" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(45deg, #d4fc79 0%, #96e6a1 100%)';">
-                    </div>
-                    <div class="pub-content">
-                        <h3 class="pub-title">MiLoRA: Harnessing Minor Singular Components for Parameter-Efficient LLM Finetuning</h3>
-                        <div class="pub-authors">Hanqing Wang, <strong>Yixia Li</strong>, Shuo Wang, Guanhua Chen, Yun Chen</div>
-                        <div class="pub-details">NAACL 2025 Main (2025.01.23) | CCF-B</div>
-                        <div class="pub-links">
-                            <a href="https://arxiv.org/abs/2406.09044" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
-                            <a href="https://github.com/sufenlp/MiLoRA" target="_blank"><i class="fab fa-github"></i> Code</a>
-                            <a href="https://openreview.net/forum?id=rPZ1IrgSVd" target="_blank"><i class="fas fa-book-open"></i> OpenReview</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    class="pub-card"
-                    data-type="conference"
-                    data-title="LayAlign: Enhancing Multilingual Reasoning in Large Language Models via Layer-Wise Adaptive Fusion and Alignment Strategy"
-                    data-img="assets/LayAlign.webp"
-                    data-authors="Zhiwen Ruan*, <strong>Yixia Li*</strong>, He Zhu, Longyue Wang, Weihua Luo, Kaifu Zhang, Yun Chen, Guanhua Chen"
-                    data-details="NAACL 2025 Findings (2025.01.23)"
-                    data-tldr="LayAlign enables layer-wise interaction between the LLM and multilingual encoder by integrating representations from all encoder layers, coupled with the adaptive fusion-enhanced attention mechanism."
-                    data-abstract="Despite being pretrained on multilingual corpora, large language models (LLMs) exhibit suboptimal performance on low-resource languages. Recent approaches have leveraged multilingual encoders alongside LLMs by introducing trainable parameters connecting the two models. However, these methods typically focus on the encoder's output, overlooking valuable information from other layers. We propose LayAlign, a framework that integrates representations from all encoder layers, coupled with the fusion-enhanced attention mechanism to enable layer-wise interaction between the LLM and the multilingual encoder. Extensive experiments on multilingual reasoning tasks, along with analyses of learned representations, show that our approach consistently outperforms existing baselines."
-                >
-                    <span class="expand-icon"><i class="fas fa-expand-alt"></i></span>
-                    <div class="pub-img-container">
-                        <img src="assets/LayAlign.webp" alt="LayAlign Paper Image" class="pub-img" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(45deg, #a1c4fd 0%, #c2e9fb 100%)';">
-                    </div>
-                    <div class="pub-content">
-                        <h3 class="pub-title">LayAlign: Enhancing Multilingual Reasoning in LLMs via Layer-Wise Adaptive Fusion...</h3>
-                        <div class="pub-authors">Zhiwen Ruan*, <strong>Yixia Li*</strong>, He Zhu, Longyue Wang, Weihua Luo, Kaifu Zhang, Yun Chen, Guanhua Chen</div>
-                        <div class="pub-details">NAACL 2025 Findings (2025.01.23)</div>
-                        <div class="pub-links">
-                            <a href="https://www.arxiv.org/abs/2502.11405" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
-                            <a href="https://github.com/zwRuan/LayAlign" target="_blank"><i class="fab fa-github"></i> Code</a>
-                            <a href="https://openreview.net/forum?id=KmRjOLJISJ" target="_blank"><i class="fas fa-book-open"></i> OpenReview</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    class="pub-card"
-                    data-type="conference"
-                    data-title="SeTAR: Out-of-Distribution Detection with Selective Low-Rank Approximation"
-                    data-img="assets/SeTAR.webp"
-                    data-authors="<strong>Yixia Li*</strong>, Boya Xiong*, Guanhua Chen, Yun Chen"
-                    data-details="NeurIPS 2024 (2024.09.26) | CCF-A"
-                    data-tldr="SeTAR, a training-free method that improves out-of-distribution detection by post-hoc modification of weight matrices, with extended fine-tuning version SeTAR+FT."
-                    data-abstract="Out-of-distribution (OOD) detection is crucial for the safe deployment of neural networks. Existing CLIP-based approaches perform OOD detection by devising novel scoring functions or sophisticated fine-tuning methods. In this work, we propose SeTAR, a novel, training-free OOD detection method that leverages selective low-rank approximation of weight matrices in vision-language and vision-only models. SeTAR enhances OOD detection via post-hoc modification of the model's weight matrices using a simple greedy search algorithm. Based on SeTAR, we further propose SeTAR+FT, a fine-tuning extension optimizing model performance for OOD detection tasks. Extensive evaluations on ImageNet1K and Pascal-VOC benchmarks show SeTAR's superior performance, reducing the relatively false positive rate by up to 18.95% and 36.80% compared to zero-shot and fine-tuning baselines. Ablation studies further validate SeTAR's effectiveness, robustness, and generalizability across different model backbones. Our work offers a scalable, efficient solution for OOD detection, setting a new state-of-the-art in this area."
-                >
-                    <span class="expand-icon"><i class="fas fa-expand-alt"></i></span>
-                    <div class="pub-img-container">
-                        <img src="assets/SeTAR.webp" alt="SeTAR Paper Image" class="pub-img" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(45deg, #fbc2eb 0%, #a6c1ee 100%)';">
-                    </div>
-                    <div class="pub-content">
-                        <h3 class="pub-title">SeTAR: Out-of-Distribution Detection with Selective Low-Rank Approximation</h3>
-                        <div class="pub-authors"><strong>Yixia Li*</strong>, Boya Xiong*, Guanhua Chen, Yun Chen</div>
-                        <div class="pub-details">NeurIPS 2024 (2024.09.26) | CCF-A</div>
-                        <div class="pub-links">
-                            <a href="https://arxiv.org/abs/2406.12629" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
-                            <a href="https://SeTAR-OOD.github.io" target="_blank"><i class="fas fa-link"></i> Project</a>
-                            <a href="https://x1a-alioss.oss-cn-shenzhen.aliyuncs.com/SeTAR_keynote.pdf" target="_blank"><i class="fas fa-chalkboard-teacher"></i> Poster</a>
-                            <a href="https://github.com/X1AOX1A/SeTAR" target="_blank"><i class="fab fa-github"></i> Code</a>
-                            <a href="https://openreview.net/forum?id=65UoJ0z7Kp" target="_blank"><i class="fas fa-book-open"></i> OpenReview</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    class="pub-card"
-                    data-type="conference"
-                    data-title="PACIT: Unlocking the Power of Examples for Better In-Context Instruction Tuning"
-                    data-img="assets/PACIT.webp"
-                    data-authors="Tianci Xue, Ziqi Wang, <strong>Yixia Li</strong>, Yun Chen, Guanhua Chen"
-                    data-details="ACL 2024 Findings (2024.05.16)"
-                    data-tldr="PACIT, a simple and effective in-context instruction tuning method, first verifies the provided example's correctness, then uses this to generate a better response."
-                    data-abstract="Instruction tuning enhances the instruction following ability of large language models by finetuning with supervised instruction data. Previous work proposes in-context instruction tuning (ICIT) where specific positive or negative examples are incorporated into the prompt for better performance. In this work, we propose PACIT, a simple and effective in-context instruction tuning method, inspired by the pedagogical concept of desirable difficulty. The PACIT method unlocks the power of examples by encouraging the model to actively learn to grasp the distinctions between the positive and negative examples instead of merely reading. The model is expected to first verify the correctness of the provided example according to the task description, which is then set as the condition for generating a better response to the task instance. Our extensive experiments prove the effectiveness of PACIT, outperforming ICIT baseline on both in-domain and out-domain tasks up to 9.16 and 3.14 average ROUGE-L scores, respectively. Moreover, PACIT can notably enhance the performance of instruction tuning even when all positive and negative examples are generated with a self-instruct method."
-                >
-                    <span class="expand-icon"><i class="fas fa-expand-alt"></i></span>
-                    <div class="pub-img-container">
-                         <img src="assets/PACIT.webp" alt="PACIT Paper Image" class="pub-img" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(45deg, #84fab0 0%, #8fd3f4 100%)';">
-                    </div>
-                    <div class="pub-content">
-                        <h3 class="pub-title">PACIT: Unlocking the Power of Examples for Better In-Context Instruction Tuning</h3>
-                        <div class="pub-authors">Tianci Xue, Ziqi Wang, <strong>Yixia Li</strong>, Yun Chen, Guanhua Chen</div>
-                        <div class="pub-details">ACL 2024 Findings (2024.05.16)</div>
-                        <div class="pub-links">
-                            <a href="https://aclanthology.org/2024.findings-acl.36/" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
-                            <a href="https://github.com/xuetianci/pacit" target="_blank"><i class="fab fa-github"></i> Code</a>
-                            <a href="https://aclanthology.org/2024.findings-acl.36/" target="_blank"><i class="fas fa-book-open"></i> Anthology</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    class="pub-card"
-                    data-type="journal"
-                    data-title="UniPoll: A Unified Social Media Poll Generation Framework via Multi-Objective Optimization"
-                    data-img="assets/UniPoll.webp"
-                    data-authors="<strong>Yixia Li</strong>, Rong Xiang, Yanlin Song, Jing Li"
-                    data-details="IEEE Transactions on Neural Networks and Learning Systems (2024.11.29) | CCF-B"
-                    data-tldr="A multi-task, multi-objective model that automatically generates polls from social media, outperforming existing models and effectively handling noisy data."
-                    data-abstract="Social media platforms are vital for expressing opinions and understanding public sentiment, yet many analytical tools overlook passive users who mainly consume content without engaging actively. To address this, we introduce UniPoll, an advanced framework designed to automatically generate polls from social media posts using sophisticated natural language generation (NLG) techniques. Unlike traditional methods that struggle with social media's informal and context-sensitive nature, UniPoll leverages enriched contexts from user comments and employs multi-objective optimization to enhance poll relevance and engagement. To tackle the inherently noisy nature of social media data, UniPoll incorporates Retrieval-Augmented Generation (RAG) and synthetic data generation, ensuring robust performance across real-world scenarios. The framework surpasses existing models, including T5, ChatGLM3, and GPT-3.5, in generating coherent and contextually appropriate question-answer pairs. Evaluated on the Chinese WeiboPolls dataset and the newly introduced English RedditPolls dataset, UniPoll demonstrates superior cross-lingual and cross-platform capabilities, making it a potent tool to boost user engagement and create a more inclusive environment for interaction."
-                >
-                    <span class="expand-icon"><i class="fas fa-expand-alt"></i></span>
-                    <div class="pub-img-container">
-                        <img src="assets/UniPoll.webp" alt="UniPoll Paper Image" class="pub-img" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(45deg, #a6c0fe 0%, #f68084 100%)';">
-                    </div>
-                    <div class="pub-content">
-                        <h3 class="pub-title">UniPoll: A Unified Social Media Poll Generation Framework via Multi-Objective Optimization</h3>
-                        <div class="pub-authors"><strong>Yixia Li</strong>, Rong Xiang, Yanlin Song, Jing Li</div>
-                        <div class="pub-details">IEEE TNNLS (2024.11.29) | CCF-B</div>
-                        <div class="pub-links">
-                            <a href="https://arxiv.org/abs/2306.06851" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
-                            <a href="https://uni-poll.github.io" target="_blank"><i class="fas fa-link"></i> Project</a>
-                            <a href="https://huggingface.co/spaces/X1A/UniPoll" target="_blank"><i class="fas fa-rocket"></i> Demo</a>
-                            <a href="https://github.com/X1AOX1A/UniPoll" target="_blank"><i class="fab fa-github"></i> Code</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    class="pub-card"
-                    data-type="journal"
-                    data-title="Cantonese Natural Language Processing in the Transformers Era, Survey and Challenges"
-                    data-img="assets/Cantonese.webp"
-                    data-authors="Rong Xiang, Emmanuele Chersoni, <strong>Yixia Li</strong>, Jing Li, Chu-Ren Huang"
-                    data-details="Journal of Language Resources and Evaluation (2024.06.08)"
-                    data-tldr="Addressing the state of NLP for Cantonese, exploring challenges and opportunities in the context of Transformers-based models."
-                    data-abstract="Despite being spoken by a large population of speakers worldwide, Cantonese is under-resourced in terms of the data scale and diversity compared to other major languages. This limitation has excluded it from the current “pre-training and fine-tuning” paradigm that is dominated by Transformer architectures. In this paper, we provide a comprehensive review on the existing resources and methodologies for Cantonese Natural Language Processing, with a special focus on tasks related to the understanding of social media data, which are the primary source of Cantonese text. Specifically, we discuss the main challenges for Cantonese NLP, addressing the two main diﬀiculties: colloquialism and multilinguality. In addition, we conduct some preliminary experiments based on Standard Chinese and Cantonese benchmark datasets with some of the current state-of-the-art Chinese language processing models."
-                >
-                    <span class="expand-icon"><i class="fas fa-expand-alt"></i></span>
-                    <div class="pub-img-container">
-                        <img src="assets/Cantonese.webp" alt="Cantonese NLP Survey Image" class="pub-img" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(45deg, #f6d365 0%, #fda085 100%)';">
-                    </div>
-                    <div class="pub-content">
-                        <h3 class="pub-title">Cantonese Natural Language Processing in the Transformers Era, Survey and Challenges</h3>
-                        <div class="pub-authors">Rong Xiang, Emmanuele Chersoni, <strong>Yixia Li</strong>, Jing Li, Chu-Ren Huang</div>
-                        <div class="pub-details">Journal of Language Resources and Evaluation (2024.06.08)</div>
-                        <div class="pub-links">
-                            <a href="https://link.springer.com/article/10.1007/s10579-024-09744-w" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    class="pub-card"
-                    data-type="conference"
-                    data-title="Electric Power Grid Invulnerability Under Intentional Edge-Based Attacks"
-                    data-img="assets/Electric.webp"
-                    data-authors="<strong>Yixia Li</strong>, Shudong Li, Yanshan Chen, Peiyan He, Xiaobo Wu, Weihong Han"
-                    data-details="DependSys 2019 (2019.11.05)"
-                    data-tldr="Examines the US power grid's vulnerability through simulated edge removal, revealing critical infrastructure risks."
-                    data-abstract="Power Grid as a kind of complex network is particularly important for every country, even brings huge losses if the power grid suffered from natural or even arti cial attacks. Therefore, how to investigate the vulnerable edges of the power grid with under attacks has become an important proposition. In this paper, taking the US power grid as an example, by deliberately deleting some percent of edges according to different strategies which represents different attacks apparently, we calculate the collapse degree of the attacked network by three metrics (The largest connected component G, ef ciency E, and average distance L). We found that, under intentional attack on the edges with higher betweenness centrality and the ones with larger multiplication of node betweenness centrality, the US power grid is inferior in invulnerability. The methods used in this paper could be used to identify the vulnerable edges of complex networks, especially for the key infrastructures."
-                >
-                    <span class="expand-icon"><i class="fas fa-expand-alt"></i></span>
-                    <div class="pub-img-container">
-                        <img src="assets/Electric.webp" alt="Electric Power Grid Paper Image" class="pub-img" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(45deg, #cd9cf2 0%, #f6f3ff 100%)';">
-                    </div>
-                    <div class="pub-content">
-                        <h3 class="pub-title">Electric Power Grid Invulnerability Under Intentional Edge-Based Attacks</h3>
-                        <div class="pub-authors"><strong>Yixia Li</strong>, Shudong Li, Yanshan Chen, Peiyan He, Xiaobo Wu, Weihong Han</div>
-                        <div class="pub-details">DependSys 2019 (2019.11.05)</div>
-                        <div class="pub-links">
-                            <a href="https://link.springer.com/chapter/10.1007/978-981-15-1304-6_37" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
-                        </div>
-                    </div>
-                </div>
+                <ul class="entry-details">
+                    <li>[Detail 1]</li>
+                    <li>[Detail 2]</li>
+                </ul>
             </div>
-        </div>
-    </section>
+        </section>
 
+        <section id="publications">
+            <h2>Publications</h2>
 
-    <section id="research">
-        <div class="container">
-            <div class="section-header">
-                <h2>Research Experience</h2>
+            <div class="publication-item">
+                <span class="authors">1. Yan Yang*, <span class="author-highlight">Yixia Li*</span>, Hongru Wang, Xuetao Wei, James Jianqiao Yu, Yun Chen, Guanhua Chen.</span>
+                <span class="title">ImPart: Importance-Aware Delta-Sparsification for Improved Model Compression and Merging in LLMs.</span>
+                <span class="venue"><strong>ACL Main, 2025</strong></span>
+                <span class="link">[<a href="https://www.arxiv.org/abs/2504.13237">paper</a>][<a href="https://github.com/X1AOX1A/ImPart">code</a>]</span>
             </div>
-            <div class="research-container">
-                <div class="research-item">
-                    <div class="research-header">
-                        <h3 class="research-title">Microsoft Research Asia</h3>
-                        <span class="research-duration">June 2025 - Now</span>
-                    </div>
-                    <p class="research-subtitle">Research Internship</p>
-                    <div class="research-details">
-                        <p>Supervisor: <a href="https://www.microsoft.com/en-us/research/people/dozhang/" target="_blank">Dr. Dongdong Zhang</a></p>
-                        <ul>
-                            <li>Efficient Large Language Models</li>
-                            <li>Reasoning Models</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="research-item">
-                    <div class="research-header">
-                        <h3 class="research-title">PolyU SMART Lab</h3>
-                        <span class="research-duration">Feb 2022 - Jan 2023</span>
-                    </div>
-                    <p class="research-subtitle">Research Assistant</p>
-                    <div class="research-details">
-                        <p>Supervisor: <a href="http://www4.comp.polyu.edu.hk/~jing1li/" target="_blank">Dr. Jing Li</a></p>
-                        <ul>
-                            <li>Automatic Poll Generation for Social Media Posts [<a href="https://uni-poll.github.io" target="_blank">Project</a>]</li>
-                            <li>Task-oriented Dialogue System Development [<a href="https://x1a-alioss.oss-cn-shenzhen.aliyuncs.com/OrderBot_v0_demo.mov" target="_blank">Demo</a>]</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="research-item">
-                    <div class="research-header">
-                        <h3 class="research-title">Huawei AARC Dept</h3>
-                        <span class="research-duration">June 2022 - Aug 2022</span>
-                    </div>
-                    <p class="research-subtitle">Research Internship</p>
-                    <div class="research-details">
-                        <p>Supervisor: <a href="https://deepai.org/profile/jingyuan-yang" target="_blank">Jingyuan Yang</a></p>
-                        <ul>
-                            <li>Extractive Long Document Q&A</li>
-                            <li>Knowledge-enhanced Dialogue System</li>
-                            <li>Chinese ASR Entity Correction</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
+            <div class="publication-item">
+                <span class="authors">2. <span class="author-highlight">Yixia Li*</span>, Boya Xiong*, Guanhua Chen, Yun Chen.</span>
+                <span class="title">SeTAR: Out-of-Distribution Detection with Selective Low-Rank Approximation.</span>
+                <span class="venue"><strong>NeurIPS, 2024</strong></span>
+                <span class="link">[<a href="https://arxiv.org/abs/2406.12629">paper</a>][<a href="https://github.com/X1AOX1A/SeTAR">code</a>]</span>
+            </div>
 
-    <section id="education">
-        <div class="container">
-            <div class="section-header">
-                <h2>Education</h2>
+            <div class="publication-item">
+                <span class="authors">3. <span class="author-highlight">Yixia Li</span>, Rong Xiang, Yanlin Song, Jing Li.</span>
+                <span class="title">UniPoll: A Unified Social Media Poll Generation Framework via Multi-Objective Optimization.</span>
+                <span class="venue"><strong>TNNLS, 2024</strong></span>
+                <span class="link">[<a href="https://arxiv.org/abs/2306.06851">paper</a>][<a href="https://github.com/X1AOX1A/UniPoll">code</a>]</span>
             </div>
-            <div class="education-container">
-                <div class="edu-item">
-                    <div class="edu-header">
-                        <h3 class="edu-title">Southern University of Science and Technology</h3>
-                        <span class="edu-duration">Sept 2023 - July 2027</span>
-                    </div>
-                    <p class="edu-subtitle">Ph.D. Candidate</p>
-                    <div class="edu-details">
-                        <p>Department of Statistics</p>
-                        <p>Supervisor: <a href="https://ghchen.me" target="_blank">Dr. Guanhua Chen</a></p>
-                    </div>
-                </div>
-                <div class="edu-item">
-                    <div class="edu-header">
-                        <h3 class="edu-title">The Hong Kong Polytechnic University</h3>
-                        <span class="edu-duration">Sept 2021 - July 2023</span>
-                    </div>
-                    <p class="edu-subtitle">M.Sc. in Data Science with Distinction</p>
-                    <div class="edu-details">
-                        <p>Department of Applied Mathematics</p>
-                        <p>Rank: Top 5%; GPA: 3.8/4.0</p>
-                    </div>
-                </div>
-                <div class="edu-item">
-                    <div class="edu-header">
-                        <h3 class="edu-title">Guangzhou University</h3>
-                        <span class="edu-duration">Sept 2017 - Jun 2021</span>
-                    </div>
-                    <p class="edu-subtitle">B.Sc. in Statistics</p>
-                    <div class="edu-details">
-                        <p>Department of Statistics</p>
-                        <p>Rank: Top 5%; GPA: 3.7/4.0</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="services">
-        <div class="container">
-            <div class="section-header">
-                <h2>Academic Services</h2>
+            <div class="publication-item">
+                <span class="authors">4. Zhiwen Ruan*, <span class="author-highlight">Yixia Li*</span>, He Zhu, Longyue Wang, Weihua Luo, Kaifu Zhang, Yun Chen, Guanhua Chen.</span>
+                <span class="title">LayAlign: Enhancing Multilingual Reasoning in Large Language Models via Layer-Wise Adaptive Fusion and Alignment Strategy.</span>
+                <span class="venue"><strong>NAACL Findings, 2025</strong></span>
+                <span class="link">[<a href="https://www.arxiv.org/abs/2502.11405">paper</a>][<a href="https://github.com/zwRuan/LayAlign">code</a>]</span>
             </div>
-            <div class="list-container">
-                <div class="list-item"><p>Reviewer: ACL Rolling Review (ARR)</p></div>
-                <div class="list-item"><p>Reviewer: Conference on Neural Information Processing Systems (NeurIPS, 2025 Top Reviewer)</p></div>
-                <div class="list-item"><p>Reviewer: IEEE Transactions on Neural Networks and Learning Systems (TNNLS)</p></div>
-                <div class="list-item"><p>Reviewer: International Conference on Natural Language Processing and Chinese Computing (NLPCC)</p></div>
-            </div>
-        </div>
-    </section>
 
-    <section id="awards">
-        <div class="container">
-            <div class="section-header">
-                <h2>Honors and Awards</h2>
+            <div class="publication-item">
+                <span class="authors">5. Zhiwen Ruan, <span class="author-highlight">Yixia Li</span>, He Zhu, Yun Chen, Peng Li, Yang Liu, Guanhua Chen.</span>
+                <span class="title">Enhancing Large Language Model Reasoning via Selective Critical Token Fine-Tuning.</span>
+                <span class="venue"><strong>Under Review</strong></span>
+                <span class="link">[<a href="https://arxiv.org/abs/2510.10974">paper</a>]</span>
             </div>
-            <div class="list-container">
-                <div class="list-item">
-                    <p><span class="date">[2023.09]</span> <strong><a href="https://www.polyu.edu.hk/fast/docdrive/file/Dean's_Honours_List_2022-23.pdf" target="_blank">Dean’s Honors List</a></strong> (Postgraduate) (Top 5%)</p>
-                </div>
-                <div class="list-item">
-                    <p><span class="date">[2020.12]</span> <strong>National Scholarship</strong> (Undergraduate) (Top 1%)</p>
-                </div>
-                <div class="list-item">
-                    <p><span class="date">[2020.11]</span> <strong>Outstanding Student</strong> (Undergraduate) (Top 5%)</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="gallery">
-        <div class="container">
-            <div class="section-header">
-                <h2>Gallery</h2>
+            <div class="publication-item">
+                <span class="authors">6. Zhiwen Ruan, <span class="author-highlight">Yixia Li</span>, Yefeng Liu, Yun Chen, Weihua Luo, Peng Li, Yang Liu, Guanhua Chen*.</span>
+                <span class="title">G2: Guided Generation for Enhanced Output Diversity in LLMs.</span>
+                <span class="venue"><strong>EMNLP Main, 2025</strong></span>
+                <!-- <span class="link">[<a href="">paper</a>][<a href="">code</a>]</span> -->
             </div>
-            <div class="gallery-container">
-                <div class="gallery-item">
-                    <img src="assets/IMG_3322.webp" alt="Gallery Image 1" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/IMG_5160.webp" alt="Gallery Image 2" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/IMG_2419.webp" alt="Gallery Image 3" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/IMG_5947.webp" alt="Gallery Image 4" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/IMG_3093.webp" alt="Gallery Image 5" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/IMG_3033.webp" alt="Gallery Image 6" loading="lazy">
-                </div>
-                 <div class="gallery-item">
-                    <img src="assets/IMG_3528.webp" alt="Gallery Image 7" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/IMG_3430.webp" alt="Gallery Image 8" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/IMG_3393.webp" alt="Gallery Image 9" loading="lazy">
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <h3>Yixia Li (李乙侠)</h3>
-                <p>Ph.D. Candidate at SUSTech</p>
-                <div class="footer-links">
-                    <a href="mailto:liyixia@me.com">Email</a>
-                    <a href="https://scholar.google.com/citations?user=LrYjRNYAAAAJ&hl=en&authuser=1" target="_blank">Google Scholar</a>
-                    <a href="https://github.com/X1AOX1A" target="_blank">GitHub</a>
-                    <a href="https://www.linkedin.com/in/liyixia" target="_blank">LinkedIn</a>
-                </div>
-                <p class="copyright">© <span id="currentYear"></span> Yixia Li. All Rights Reserved. Drafted by DeepSeek R1 and Refined by Gemini 2.5 Pro.</p>
-                <img src="https://embed.notionlytics.com/wt/ZXlKM2IzSnJjM0JoWTJWVWNtRmphMlZ5U1dRaU9pSnpOM1ppUXpWVVYyMUtVWEkwZDBScmFVZzVXQ0lzSW5CaFoyVkpaQ0k2SW1JeE1EQTNNVEl6TkdWa05EUTRObVk0TURKbU5UQXhNakUwTjJZeVltRmxJbjA9" alt="Tracker" style="display:none;">
+            <div class="publication-item">
+                <span class="authors">7. Hanqing Wang, <span class="author-highlight">Yixia Li</span>, Shuo Wang, Guanhua Chen, Yun Chen.</span>
+                <span class="title">MiLoRA: Harnessing Minor Singular Components for Parameter-Efficient LLM Finetuning.</span>
+                <span class="venue"><strong>NAACL Main, 2025</strong></span>
+                <span class="link">[<a href="https://arxiv.org/abs/2406.09044">paper</a>][<a href="https://github.com/sufenlp/MiLoRA">code</a>]</span>
             </div>
-        </div>
-    </footer>
 
-    <div id="publicationModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" id="closePubModal">&times;</span>
-            <h3 id="modalTitle"></h3>
-            <img id="modalImage" src="#" alt="Publication Image" onerror="this.style.display='none';">
-            <h4>Authors</h4>
-            <p id="modalAuthors"></p>
-            <h4>Details</h4>
-            <p id="modalDetails"></p>
-            <h4>Links</h4>
-            <div id="modalLinks" class="pub-links"></div>
-            <h4>TL;DR</h4>
-            <p id="modalTldr"></p>
-            <h4>Abstract</h4>
-            <p id="modalAbstract"></p>
-        </div>
+            <div class="publication-item">
+                <span class="authors">8. Tianci Xue, Ziqi Wang, <span class="author-highlight">Yixia Li</span>, Yun Chen, Guanhua Chen.</span>
+                <span class="title">PACIT: Unlocking the Power of Examples for Better In-Context Instruction Tuning.</span>
+                <span class="venue"><strong>ACL Findings, 2024</strong></span>
+                <span class="link">[<a href="https://aclanthology.org/2024.findings-acl.36/">paper</a>][<a href="https://github.com/xuetianci/pacit">code</a>]</span>
+            </div>
+
+            <div class="publication-item">
+                <span class="authors">9. He Zhu, Yifan Ding, Yicheng Tao, Zhiwen Ruan, <span class="author-highlight">Yixia Li</span>, Wenjia Zhang, Yun Chen, Guanhua Chen.</span>
+                <span class="title">FANNO: Augmenting High-Quality Instruction Data with Open-Sourced LLMs Only.</span>
+                <span class="venue"><strong>ACL Findings, 2025</strong></span>
+                <span class="link">[<a href="https://openreview.net/forum?id=CULXUPIAi8&referrer=%5Bthe%20profile%20of%20Yixia%20Li%5D(%2Fprofile%3Fid%3D~Yixia_Li1)">paper</a>][<a href="https://github.com/sustech-nlp/FANNO">code</a>]</span>
+            </div>
+
+            <div class="publication-item">
+                <span class="authors">10. Lingjie Jiang, Shaohan Huang, Xun Wu, <span class="author-highlight">Yixia Li</span>, Dongdong Zhang, Furu Wei.</span>
+                <span class="title">Vis-Codex: Unified Multimodal Code Generation via Merging Vision and Coding Models.</span>
+                <span class="venue"><strong>Under Review</strong></span>
+                <span class="link">[<a href="https://www.arxiv.org/abs/2508.09945">paper</a>][<a href="https://github.com/JackLingjie/VisCodex">code</a>]</span>
+            </div>
+
+            <div class="publication-item">
+                <span class="authors">11. Rong Xiang, Emmanuele Chersoni, <span class="author-highlight">Yixia Li</span>, Jing Li, Chu-Ren Huang.</span>
+                <span class="title">Cantonese Natural Language Processing in the Transformers Era, Survey and Challenges.</span>
+                <span class="venue"><strong>Journal of Language Resources and Evaluation, 2024</strong></span>
+                <span class="link">[<a href="https://link.springer.com/article/10.1007/s10579-024-09744-w">paper</a>]</span>
+            </div>
+
+            <div class="publication-item">
+                <span class="authors">12. <span class="author-highlight">Yixia Li</span>, Shudong Li, Yanshan Chen, Peiyan He, Xiaobo Wu, Weihong Han.</span>
+                <span class="title">Electric Power Grid Invulnerability Under Intentional Edge-Based Attacks.</span>
+                <span class="venue"><strong>Communications in Computer and Information Science, 2019</strong></span>
+                <!-- <span class="link">[<a href="">paper</a>][<a href="">code</a>]</span> -->
+            </div>
+
+            <!-- Template for adding new publications -->
+            <div class="publication-item template-entry">
+                <span class="authors">[Number]. [Author 1], <span class="author-highlight">[Your Name]</span>, [Other Authors].</span>
+                <span class="title">[Paper Title].</span>
+                <span class="venue"><strong>[Conference/Journal, Year]</strong></span>
+                <span class="link">[<a href="">paper</a>][<a href="">code</a>]</span>
+            </div>
+        </section>
+
+        <section id="internships">
+            <h2>Internships</h2>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">Microsoft Research Asia</div>
+                    <div class="entry-location">Beijing, China</div>
+                </div>
+                <div class="entry-header">
+                    <div class="entry-subtitle">Supervisor: <a href="https://www.microsoft.com/en-us/research/people/dozhang/">Dr. Dongdong Zhang</a></div>
+                    <div class="entry-location">2025.06 - Now</div>
+                </div>
+                <ul class="entry-details">
+                    <li>Efficient Large Language Models</li>
+                    <li>Reasoning Models</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">PolyU SMART Lab</div>
+                    <div class="entry-location">Hong Kong, China</div>
+                </div>
+                <div class="entry-header">
+                    <div class="entry-subtitle">Supervisor: <a href="http://www4.comp.polyu.edu.hk/~jing1li/">Dr. Jing Li</a></div>
+                    <div class="entry-location">2022.08 - 2023.07</div>
+                </div>
+                <ul class="entry-details">
+                    <li>Social Media Opinion Polling</li>
+                    <li>Cantonese Medical Dialogue System</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-title">Huawei</div>
+                    <div class="entry-location">Shenzhen, China</div>
+                </div>
+                <div class="entry-header">
+                    <div class="entry-subtitle">Supervisor: <a href="https://deepai.org/profile/jingyuan-yang">Jingyuan Yang</a></div>
+                    <div class="entry-location">2022.06 - 2022.08</div>
+                </div>
+                <ul class="entry-details">
+                    <li>Extractive Document Q&A</li>
+                    <li>Knowledge-enhanced Dialogue System</li>
+                    <li>Chinese ASR Entity Correction</li>
+                </ul>
+            </div>
+
+            <!-- Template for adding new internships -->
+            <div class="entry template-entry">
+                <div class="entry-header">
+                    <div class="entry-title">[Company Name]</div>
+                    <div class="entry-location">[Location]</div>
+                </div>
+                <div class="entry-header">
+                    <div class="entry-subtitle">Supervisor: <a href="">Name of Supervisor</a></div>
+                    <div class="entry-location">[Start Date] - [End Date]</div>
+                </div>
+                <ul class="entry-details">
+                    <li>[Description]</li>
+                    <li>[Description]</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="academic-services">
+            <h2>Academic Services</h2>
+
+            <p style="font-size: 14px; margin-bottom: 10px;"><strong>Reviewers for:</strong></p>
+            <ul class="reviewer-list">
+                <li><em>ACL Rolling Review (ARR)</em></li>
+                <li><em>Conference on Neural Information Processing Systems (NeurIPS, Top Reviewer in 2025)</em></li>
+                <li><em>IEEE Transactions on Neural Networks and Learning Systems (TNNLS)</em></li>
+                <li><em>International Conference on Natural Language Processing and Chinese Computing (NLPCC)</em></li>
+            </ul>
+
+            <!-- Template for adding new reviewer roles -->
+            <ul class="reviewer-list template-entry">
+                <li><em>[Conference/Journal Name (Additional Info)]</em></li>
+            </ul>
+        </section>
+
+        <section id="awards">
+            <h2>Awards and Honors</h2>
+
+            <ul class="award-list">
+                <li><strong>National Scholarship</strong>, Top 1%, Southern University of Science and Technology <span style="float: right;">2025.10</span></li>
+                <li><strong>Dean's Honors List</strong>, Top 5%, The Hong Kong Polytechnic University <span style="float: right;">2023.09</span></li>
+                <li><strong>National Scholarship</strong>, Top 1%, Guangzhou University <span style="float: right;">2020.12</span></li>
+                <li><strong>Outstanding Student</strong>, Top 5%, Guangzhou University <span style="float: right;">2020.11</span></li>
+            </ul>
+
+            <!-- Template for adding new awards -->
+            <ul class="award-list template-entry">
+                <li><strong>[Award Name],</strong> [Details], [Institution] <span style="float: right;">[Date]</span></li>
+            </ul>
+        </section>
     </div>
-
-    <div id="galleryLightbox" class="lightbox">
-        <span class="lightbox-close-btn" id="closeLightbox">&times;</span>
-        <img class="lightbox-content" id="lightboxImg" src="#" alt="Lightbox Image">
-        <a class="prev" id="prevSlide">&#10094;</a>
-        <a class="next" id="nextSlide">&#10095;</a>
-    </div>
-
-    <script>
-        // Theme toggle functionality
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = themeToggle.querySelector('i');
-        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-
-        function updateDOMForTheme(isDark) {
-            if (isDark) {
-                document.body.classList.add('dark-mode');
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-            } else {
-                document.body.classList.remove('dark-mode');
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-            }
-        }
-
-        function initializeTheme() {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                updateDOMForTheme(savedTheme === 'dark');
-            } else {
-                updateDOMForTheme(prefersDarkScheme.matches);
-            }
-        }
-
-        initializeTheme();
-
-        themeToggle.addEventListener('click', () => {
-            const isCurrentlyDark = document.body.classList.contains('dark-mode');
-            const newThemeIsDark = !isCurrentlyDark;
-            updateDOMForTheme(newThemeIsDark);
-            localStorage.setItem('theme', newThemeIsDark ? 'dark' : 'light');
-        });
-
-        prefersDarkScheme.addEventListener('change', (e) => {
-            if (!localStorage.getItem('theme')) { // Only apply if no user preference is set
-                updateDOMForTheme(e.matches);
-            }
-        });
-
-        // Publication filtering
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const pubCards = document.querySelectorAll('.pub-card');
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                const filter = button.getAttribute('data-filter');
-
-                pubCards.forEach(card => {
-                    // Make sure card has data-type attribute before trying to access it
-                    const cardType = card.getAttribute('data-type');
-                    if (filter === 'all' || cardType === filter) {
-                        card.classList.remove('hidden');
-                    } else {
-                        card.classList.add('hidden');
-                    }
-                });
-            });
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === "#") return; // Avoid scrolling for empty href
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    // Calculate header height dynamically
-                    const header = document.querySelector('header');
-                    const headerHeight = header ? header.offsetHeight : 70; // Fallback height
-
-                    window.scrollTo({
-                        top: targetElement.offsetTop - headerHeight,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Publication Modal Logic
-        const pubModal = document.getElementById('publicationModal');
-        const closePubModalBtn = document.getElementById('closePubModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalImage = document.getElementById('modalImage');
-        const modalAuthors = document.getElementById('modalAuthors');
-        const modalDetails = document.getElementById('modalDetails');
-        const modalTldr = document.getElementById('modalTldr');
-        const modalAbstract = document.getElementById('modalAbstract');
-        const modalLinksContainer = document.getElementById('modalLinks');
-
-        document.querySelectorAll('.pub-card').forEach(card => {
-            card.addEventListener('click', function(event) {
-                // Prevent modal from opening if a link within the card's content was clicked
-                if (event.target.closest('.pub-content a, .pub-card > .pub-links a')) {
-                    return;
-                }
-
-                modalTitle.textContent = this.dataset.title || 'N/A';
-                const imgSrc = this.dataset.img || 'https://placehold.co/600x300/CCCCCC/FFFFFF?text=No+Image';
-                modalImage.src = imgSrc;
-                modalImage.alt = (this.dataset.title || "Publication") + " Image";
-                modalImage.style.display = 'block'; // Always try to display, onerror handles failure
-                modalImage.onerror = function() {
-                    this.src='https://placehold.co/600x300/CCCCCC/FFFFFF?text=Image+Load+Error';
-                    // Optionally hide if even placeholder fails, or keep placeholder visible
-                    // this.style.display='none';
-                };
-
-                modalAuthors.innerHTML = this.dataset.authors || 'N/A'; // Allows for <strong> tags
-                modalDetails.textContent = this.dataset.details || 'N/A';
-
-                modalLinksContainer.innerHTML = ''; // Clear previous links
-                const linksOnCard = this.querySelectorAll('.pub-content > .pub-links a');
-                if (linksOnCard.length > 0) {
-                    linksOnCard.forEach(link => {
-                        const clonedLink = link.cloneNode(true);
-                        modalLinksContainer.appendChild(clonedLink);
-                    });
-                }
-
-                modalTldr.textContent = this.dataset.tldr || 'N/A';
-                modalAbstract.textContent = this.dataset.abstract || 'N/A';
-
-                pubModal.style.display = "block";
-                document.body.style.overflow = 'hidden'; // Prevent background scroll when modal is open
-            });
-        });
-
-        closePubModalBtn.onclick = function() {
-            pubModal.style.display = "none";
-            document.body.style.overflow = ''; // Restore background scroll
-        }
-
-        // News Collapsing Logic
-        const newsContainer = document.getElementById('newsContainer');
-        const allNewsItems = Array.from(newsContainer.querySelectorAll('.news-item'));
-        const toggleNewsBtn = document.getElementById('toggleNewsBtn');
-        const oneYearAgo = new Date();
-        oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
-
-        let oldNewsItems = [];
-        allNewsItems.forEach(item => {
-            const dateStr = item.dataset.date;
-            if (dateStr) {
-                try {
-                    const itemDate = new Date(dateStr);
-                    if (!isNaN(itemDate.valueOf()) && itemDate < oneYearAgo) { // Check if date is valid and older than one year
-                        item.classList.add('old-news-item', 'hidden-news');
-                        oldNewsItems.push(item);
-                    }
-                } catch (e) {
-                    console.error("Invalid date format for news item:", dateStr, item);
-                }
-            }
-        });
-
-        if (oldNewsItems.length === 0) {
-            if(toggleNewsBtn) toggleNewsBtn.style.display = 'none';
-        } else if (toggleNewsBtn) {
-            toggleNewsBtn.textContent = `Expand ${oldNewsItems.length} Older News`;
-        }
-
-        if(toggleNewsBtn) {
-            toggleNewsBtn.addEventListener('click', () => {
-                const isCurrentlyCollapsed = newsContainer.querySelectorAll('.old-news-item.hidden-news').length > 0;
-                if (isCurrentlyCollapsed) {
-                    oldNewsItems.forEach(item => {
-                        item.classList.remove('hidden-news');
-                    });
-                    toggleNewsBtn.textContent = 'Show Fewer News';
-                } else {
-                    oldNewsItems.forEach(item => {
-                        item.classList.add('hidden-news');
-                    });
-                    toggleNewsBtn.textContent = `Expand ${oldNewsItems.length} Older News`;
-                }
-            });
-        }
-
-
-        // Gallery Lightbox Logic
-        const lightbox = document.getElementById('galleryLightbox');
-        const lightboxImg = document.getElementById('lightboxImg');
-        const closeLightboxBtn = document.getElementById('closeLightbox');
-        const galleryImgs = document.querySelectorAll('.gallery-item img');
-        const prevSlideBtn = document.getElementById('prevSlide');
-        const nextSlideBtn = document.getElementById('nextSlide');
-        let currentImageIndex = 0;
-
-        galleryImgs.forEach((item, index) => {
-            item.addEventListener('click', () => {
-                currentImageIndex = index;
-                updateLightboxImage();
-                lightbox.style.display = 'block';
-                document.body.style.overflow = 'hidden'; // Prevent background scroll
-            });
-        });
-
-        function updateLightboxImage() {
-            if (galleryImgs.length > 0 && galleryImgs[currentImageIndex]) {
-                 lightboxImg.src = galleryImgs[currentImageIndex].src;
-                 lightboxImg.alt = galleryImgs[currentImageIndex].alt || "Gallery Image";
-            } else if (galleryImgs.length > 0) { // Fallback if index is out of bounds somehow
-                 lightboxImg.src = galleryImgs[0].src;
-                 lightboxImg.alt = galleryImgs[0].alt || "Gallery Image";
-            } else { // No images in gallery
-                lightboxImg.src = 'https://placehold.co/800x600/CCCCCC/FFFFFF?text=No+Image+Available';
-                lightboxImg.alt = "No Image Available";
-            }
-        }
-
-        closeLightboxBtn.onclick = () => {
-            lightbox.style.display = 'none';
-            document.body.style.overflow = ''; // Restore background scroll
-        }
-        prevSlideBtn.onclick = () => {
-            currentImageIndex = (currentImageIndex - 1 + galleryImgs.length) % galleryImgs.length;
-            updateLightboxImage();
-        }
-        nextSlideBtn.onclick = () => {
-            currentImageIndex = (currentImageIndex + 1) % galleryImgs.length;
-            updateLightboxImage();
-        }
-
-        // Close modals on outside click or Escape key
-        window.onclick = function(event) {
-            if (event.target == pubModal) {
-                pubModal.style.display = "none";
-                document.body.style.overflow = '';
-            }
-            if (event.target == lightbox) {
-                lightbox.style.display = "none";
-                document.body.style.overflow = '';
-            }
-        }
-        window.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                if (pubModal.style.display === 'block') {
-                    pubModal.style.display = "none";
-                    document.body.style.overflow = '';
-                }
-                if (lightbox.style.display === 'block') {
-                    lightbox.style.display = "none";
-                    document.body.style.overflow = '';
-                }
-            }
-        });
-
-        // Set current year in footer
-        const currentYearElement = document.getElementById('currentYear');
-        if (currentYearElement) {
-            currentYearElement.textContent = new Date().getFullYear();
-        }
-
-        // Header scroll effect
-        const header = document.querySelector('header');
-        let lastScrollTop = 0;
-        const scrollThreshold = 5; // Small threshold to avoid hiding on minor scrolls
-
-        window.addEventListener('scroll', function() {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-            if (Math.abs(scrollTop - lastScrollTop) <= scrollThreshold) {
-                return; // Not enough scroll to trigger change
-            }
-
-            if (scrollTop > lastScrollTop && scrollTop > (header ? header.offsetHeight : 70)) {
-                // Scroll Down
-                if (header) header.classList.add('header-hidden');
-            } else {
-                // Scroll Up or at the top
-                if (header) header.classList.remove('header-hidden');
-            }
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
-        }, false);
-
-
-        // Image error handling for publication cards and gallery
-        // This is a more generic way to handle image errors if you add images dynamically
-        // For already existing img tags, the onerror attribute is more direct.
-        document.addEventListener('error', function (event) {
-            if (event.target.tagName === 'IMG') {
-                const targetImg = event.target;
-                // For publication images
-                if (targetImg.classList.contains('pub-img')) {
-                    targetImg.src = 'https://placehold.co/600x300/CCCCCC/FFFFFF?text=Image+Load+Error';
-                    if (targetImg.parentElement) {
-                        targetImg.parentElement.style.background = 'var(--light-gray)';
-                    }
-                }
-                // For gallery images
-                else if (targetImg.parentElement && targetImg.parentElement.classList.contains('gallery-item')) {
-                     targetImg.src = 'https://placehold.co/300x300/CCCCCC/FFFFFF?text=Image+Error';
-                }
-                // For hero background (though this is a CSS background, added just in case)
-                else if (targetImg.id === 'hero-bg-img-fallback') { // Assuming you might add an <img> for hero
-                    targetImg.style.display = 'none';
-                    const heroSection = document.querySelector('.hero');
-                    if (heroSection) heroSection.style.backgroundImage = 'linear-gradient(var(--primary), var(--secondary))';
-                }
-            }
-        }, true); // Use capture phase to catch errors early
-
-    </script>
 </body>
 </html>
