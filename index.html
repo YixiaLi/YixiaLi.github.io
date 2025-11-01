@@ -19,6 +19,10 @@
             padding: 40px 20px;
         }
 
+        :root {
+            --entry-font-size: 14px;
+        }
+
         .container {
             max-width: 900px;
             margin: 0 auto;
@@ -88,27 +92,27 @@
 
         .entry-title {
             font-weight: bold;
-            font-size: 15px;
+            font-size: var(--entry-font-size);
         }
 
         .entry-location {
             text-align: right;
-            font-size: 14px;
+            font-size: var(--entry-font-size);
         }
 
         .entry-subtitle {
             font-style: italic;
-            font-size: 14px;
+            font-size: var(--entry-font-size);
             margin-bottom: 3px;
         }
 
         .entry-details {
-            font-size: 14px;
+            font-size: var(--entry-font-size);
             margin-left: 20px;
         }
 
         .entry-info {
-            font-size: 14px;
+            font-size: var(--entry-font-size);
             line-height: 1.6;
             margin-bottom: 5px;
             margin-left: 0px;
@@ -120,7 +124,7 @@
         }
 
         .publication-item {
-            font-size: 14px;
+            font-size: var(--entry-font-size);
             margin-bottom: 15px;
             text-align: justify;
             line-height: 1.5;
@@ -147,7 +151,7 @@
         }
 
         .reviewer-list, .award-list {
-            font-size: 14px;
+            font-size: var(--entry-font-size);
             margin-left: 20px;
         }
 
@@ -182,6 +186,7 @@
         }
 
         /* 字号整体小一点（约 10–15%） */
+        :root { --entry-font-size: 13px; }
         h1 { font-size: 40px; }       /* 原 48px */
         .degree { font-size: 18px; }  /* 原 20px */
 
@@ -203,14 +208,10 @@
         section { margin-bottom: 34px; } /* 原 45px */
 
         .entry { margin-bottom: 20px; }
-        .entry-title    { font-size: 14px; } /* 原 15px */
-        .entry-subtitle { font-size: 13px; } /* 原 14px */
-        .entry-location { font-size: 13px; } /* 原 14px */
-        .entry-details  { font-size: 13px; margin-left: 16px; } /* 原 14px / 20px */
-        .entry-info     { font-size: 13px; }
+        .entry-details  { margin-left: 16px; } /* 原 20px */
 
-        .publication-item { font-size: 13px; margin-bottom: 12px; }
-        .reviewer-list, .award-list { font-size: 13px; margin-left: 16px; }
+        .publication-item { margin-bottom: 12px; }
+        .reviewer-list, .award-list { margin-left: 16px; }
         .reviewer-list li, .award-list li { margin-bottom: 6px; }
 
         /* 右侧日期保持在同一行，必要时断词以避免横向滚动 */
