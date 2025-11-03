@@ -41,7 +41,8 @@
             font-size: 48px;
             font-weight: normal;
             letter-spacing: 2px;
-            margin-bottom: 5px;
+            margin-bottom: 2px;
+            margin-top: 15px;
         }
 
         .degree {
@@ -52,7 +53,7 @@
 
         .contact-info {
             text-align: right;
-            margin-top: -50px;
+            margin-top: -80px;
             font-size: 14px;
             line-height: 1.8;
         }
@@ -181,7 +182,7 @@
         /* 边框更细 */
         header {
             border-bottom-width: 1px;   /* 原 2px */
-            padding-bottom: 10px;       /* 原 15px */
+            padding-bottom: 8px;        /* 原 10px */
             margin-bottom: 30px;        /* 原 40px */
         }
 
@@ -218,6 +219,11 @@
         .award-list li span[style*="float: right"] {
             white-space: nowrap; overflow-wrap: anywhere;
         }
+        }
+
+        /* === Landscape on narrow devices: bump text size for key entries === */
+        @media (max-width: 900px) and (orientation: landscape) {
+            :root { --entry-font-size: 15px; }
         }
 
 
