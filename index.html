@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yixia Li - Ph.D.</title>
+    <title>Yixia Li</title>
     <style>
         * {
             margin: 0;
@@ -152,28 +152,27 @@
         .publication-item {
             font-size: var(--entry-font-size);
             margin-bottom: 15px;
-            text-align: justify;
             line-height: 1.5;
         }
 
-        .publication-item .authors {
-            font-weight: normal;
+        .publication-item .paper-title {
+            font-style: normal;
+            font-weight: 600;
+            color: #111827; /* subtle deep blue-gray (near-black) */
+        }
+
+        .publication-item .paper-meta {
+            margin-left: 20px;
+            margin-top: 4px;
+            color: #374151; /* slightly softer than title */
+        }
+
+        .publication-item .paper-meta li {
+            margin-bottom: 3px;
         }
 
         .publication-item .author-highlight {
             font-weight: bold;
-        }
-
-        .publication-item .title {
-            font-style: italic;
-        }
-
-        .publication-item .venue {
-            font-weight: normal;
-        }
-
-        .publication-item .link {
-            font-weight: normal;
         }
 
         .reviewer-list, .award-list {
@@ -223,6 +222,7 @@
         .entry-details  { margin-left: 16px; } /* 原 20px */
 
         .publication-item { margin-bottom: 12px; }
+        .publication-item .paper-meta { margin-left: 16px; }
         .reviewer-list, .award-list { margin-left: 16px; }
         .reviewer-list li, .award-list li { margin-bottom: 6px; }
 
@@ -334,103 +334,118 @@
             <h2>Publications</h2>
 
             <div class="publication-item">
-                <span class="authors">1. <span class="author-highlight">Yixia Li</span>, Hongru Wang, Jiahao Qiu, Zhenfei Yin, Dongdong Zhang, Cheng Qian, Zeping Li, Pony Ma, Guanhua Chen, Heng Ji, Mengdi Wang.</span>
-                <span class="title">From Word to World: Can Large Language Models be Implicit Text-based World Models?</span>
-                <span class="venue"><strong>arXiv, 2025</strong></span>
-                <span class="link">[<a href="https://github.com/X1AOX1A/Word2World/blob/main/assets/main.pdf">paper</a>][<a href="https://github.com/X1AOX1A/Word2World">code</a>]</span>
+                <div class="paper-title">From Word to World: Can Large Language Models be Implicit Text-based World Models?</div>
+                <ul class="paper-meta">
+                    <li><span class="author-highlight">Yixia Li</span>, Hongru Wang, Jiahao Qiu, Zhenfei Yin, Dongdong Zhang, Cheng Qian, Zeping Li, Pony Ma, Guanhua Chen, Heng Ji, Mengdi Wang</li>
+                    <li><em>arXiv, 2025</em> [<a href="https://github.com/X1AOX1A/Word2World/blob/main/assets/main.pdf">paper</a>][<a href="https://github.com/X1AOX1A/Word2World">code</a>]</li>
+                </ul>
             </div>
 
             <div class="publication-item">
-                <span class="authors">2. Yan Yang*, <span class="author-highlight">Yixia Li*</span>, Hongru Wang, Xuetao Wei, James Jianqiao Yu, Yun Chen, Guanhua Chen.</span>
-                <span class="title">ImPart: Importance-Aware Delta-Sparsification for Improved Model Compression and Merging in LLMs.</span>
-                <span class="venue"><strong>ACL Main, 2025</strong></span>
-                <span class="link">[<a href="https://www.arxiv.org/abs/2504.13237">paper</a>][<a href="https://github.com/X1AOX1A/ImPart">code</a>]</span>
-            </div>
-
-            <div class="publication-item">
-                <span class="authors">3. <span class="author-highlight">Yixia Li*</span>, Boya Xiong*, Guanhua Chen, Yun Chen.</span>
-                <span class="title">SeTAR: Out-of-Distribution Detection with Selective Low-Rank Approximation.</span>
-                <span class="venue"><strong>NeurIPS, 2024</strong></span>
-                <span class="link">[<a href="https://arxiv.org/abs/2406.12629">paper</a>][<a href="https://github.com/X1AOX1A/SeTAR">code</a>]</span>
-            </div>
-
-            <div class="publication-item">
-                <span class="authors">4. Zhiwen Ruan*, <span class="author-highlight">Yixia Li*</span>, He Zhu, Longyue Wang, Weihua Luo, Kaifu Zhang, Yun Chen, Guanhua Chen.</span>
-                <span class="title">LayAlign: Enhancing Multilingual Reasoning in Large Language Models via Layer-Wise Adaptive Fusion and Alignment Strategy.</span>
-                <span class="venue"><strong>NAACL Findings, 2025</strong></span>
-                <span class="link">[<a href="https://www.arxiv.org/abs/2502.11405">paper</a>][<a href="https://github.com/zwRuan/LayAlign">code</a>]</span>
-            </div>
-
-            <div class="publication-item">
-                <span class="authors">5. <span class="author-highlight">Yixia Li</span>, Rong Xiang, Yanlin Song, Jing Li.</span>
-                <span class="title">UniPoll: A Unified Social Media Poll Generation Framework via Multi-Objective Optimization.</span>
-                <span class="venue"><strong>TNNLS, 2024</strong></span>
-                <span class="link">[<a href="https://arxiv.org/abs/2306.06851">paper</a>][<a href="https://github.com/X1AOX1A/UniPoll">code</a>]</span>
-            </div>
-
-            <div class="publication-item">
-                <span class="authors">6. Zhiwen Ruan, <span class="author-highlight">Yixia Li</span>, Yefeng Liu, Yun Chen, Weihua Luo, Peng Li, Yang Liu, Guanhua Chen.</span>
-                <span class="title">G2: Guided Generation for Enhanced Output Diversity in LLMs.</span>
-                <span class="venue"><strong>EMNLP Main, 2025</strong></span>
-                <span class="link">[<a href="https://aclanthology.org/2025.emnlp-main.713/">paper</a>][<a href="https://github.com/sustech-nlp/emnlp25-g2">code</a>]</span>
-            </div>
-
-            <div class="publication-item">
-                <span class="authors">7. Hanqing Wang, <span class="author-highlight">Yixia Li</span>, Shuo Wang, Guanhua Chen, Yun Chen.</span>
-                <span class="title">MiLoRA: Harnessing Minor Singular Components for Parameter-Efficient LLM Finetuning.</span>
-                <span class="venue"><strong>NAACL Main, 2025</strong></span>
-                <span class="link">[<a href="https://arxiv.org/abs/2406.09044">paper</a>][<a href="https://github.com/sufenlp/MiLoRA">code</a>]</span>
-            </div>
-
-            <div class="publication-item">
-                <span class="authors">8. Zhiwen Ruan, <span class="author-highlight">Yixia Li</span>, He Zhu, Yun Chen, Peng Li, Yang Liu, Guanhua Chen.</span>
-                <span class="title">Enhancing Large Language Model Reasoning via Selective Critical Token Fine-Tuning.</span>
-                <span class="venue"><strong>Under Review, 2025</strong></span>
-                <span class="link">[<a href="https://arxiv.org/abs/2510.10974">paper</a>]</span>
+                <div class="paper-title">ImPart: Importance-Aware Delta-Sparsification for Improved Model Compression and Merging in LLMs</div>
+                <ul class="paper-meta">
+                    <li>Yan Yang*, <span class="author-highlight">Yixia Li*</span>, Hongru Wang, Xuetao Wei, James Jianqiao Yu, Yun Chen, Guanhua Chen</li>
+                    <li><em>ACL Main, 2025</em> [<a href="https://www.arxiv.org/abs/2504.13237">paper</a>][<a href="https://github.com/X1AOX1A/ImPart">code</a>]</li>
+                </ul>
             </div>
 
 
             <div class="publication-item">
-                <span class="authors">9. Tianci Xue, Ziqi Wang, <span class="author-highlight">Yixia Li</span>, Yun Chen, Guanhua Chen.</span>
-                <span class="title">PACIT: Unlocking the Power of Examples for Better In-Context Instruction Tuning.</span>
-                <span class="venue"><strong>ACL Findings, 2024</strong></span>
-                <span class="link">[<a href="https://aclanthology.org/2024.findings-acl.36/">paper</a>][<a href="https://github.com/xuetianci/pacit">code</a>]</span>
+                <div class="paper-title">LayAlign: Enhancing Multilingual Reasoning in Large Language Models via Layer-Wise Adaptive Fusion and Alignment Strategy</div>
+                <ul class="paper-meta">
+                    <li>Zhiwen Ruan*, <span class="author-highlight">Yixia Li*</span>, He Zhu, Longyue Wang, Weihua Luo, Kaifu Zhang, Yun Chen, Guanhua Chen</li>
+                    <li><em>NAACL Findings, 2025</em> [<a href="https://www.arxiv.org/abs/2502.11405">paper</a>][<a href="https://github.com/zwRuan/LayAlign">code</a>]</li>
+                </ul>
             </div>
 
             <div class="publication-item">
-                <span class="authors">10. He Zhu, Yifan Ding, Yicheng Tao, Zhiwen Ruan, <span class="author-highlight">Yixia Li</span>, Wenjia Zhang, Yun Chen, Guanhua Chen.</span>
-                <span class="title">FANNO: Augmenting High-Quality Instruction Data with Open-Sourced LLMs Only.</span>
-                <span class="venue"><strong>ACL Findings, 2025</strong></span>
-                <span class="link">[<a href="https://openreview.net/forum?id=CULXUPIAi8&referrer=%5Bthe%20profile%20of%20Yixia%20Li%5D(%2Fprofile%3Fid%3D~Yixia_Li1)">paper</a>][<a href="https://github.com/sustech-nlp/FANNO">code</a>]</span>
+                <div class="paper-title">SeTAR: Out-of-Distribution Detection with Selective Low-Rank Approximation</div>
+                <ul class="paper-meta">
+                    <li><span class="author-highlight">Yixia Li*</span>, Boya Xiong*, Guanhua Chen, Yun Chen</li>
+                    <li><em>NeurIPS, 2024</em> [<a href="https://arxiv.org/abs/2406.12629">paper</a>][<a href="https://github.com/X1AOX1A/SeTAR">code</a>]</li>
+                </ul>
             </div>
 
             <div class="publication-item">
-                <span class="authors">11. Lingjie Jiang, Shaohan Huang, Xun Wu, <span class="author-highlight">Yixia Li</span>, Dongdong Zhang, Furu Wei.</span>
-                <span class="title">Vis-Codex: Unified Multimodal Code Generation via Merging Vision and Coding Models.</span>
-                <span class="venue"><strong>Under Review, 2025</strong></span>
-                <span class="link">[<a href="https://www.arxiv.org/abs/2508.09945">paper</a>][<a href="https://github.com/JackLingjie/VisCodex">code</a>]</span>
+                <div class="paper-title">UniPoll: A Unified Social Media Poll Generation Framework via Multi-Objective Optimization</div>
+                <ul class="paper-meta">
+                    <li><span class="author-highlight">Yixia Li</span>, Rong Xiang, Yanlin Song, Jing Li</li>
+                    <li><em>TNNLS, 2024</em> [<a href="https://arxiv.org/abs/2306.06851">paper</a>][<a href="https://github.com/X1AOX1A/UniPoll">code</a>]</li>
+                </ul>
             </div>
 
             <div class="publication-item">
-                <span class="authors">12. Rong Xiang, Emmanuele Chersoni, <span class="author-highlight">Yixia Li</span>, Jing Li, Chu-Ren Huang.</span>
-                <span class="title">Cantonese Natural Language Processing in the Transformers Era, Survey and Challenges.</span>
-                <span class="venue"><strong>Journal of Language Resources and Evaluation, 2024</strong></span>
-                <span class="link">[<a href="https://link.springer.com/article/10.1007/s10579-024-09744-w">paper</a>]</span>
+                <div class="paper-title">G2: Guided Generation for Enhanced Output Diversity in LLMs</div>
+                <ul class="paper-meta">
+                    <li>Zhiwen Ruan, <span class="author-highlight">Yixia Li</span>, Yefeng Liu, Yun Chen, Weihua Luo, Peng Li, Yang Liu, Guanhua Chen</li>
+                    <li><em>EMNLP Main, 2025</em> [<a href="https://aclanthology.org/2025.emnlp-main.713/">paper</a>][<a href="https://github.com/sustech-nlp/emnlp25-g2">code</a>]</li>
+                </ul>
             </div>
 
             <div class="publication-item">
-                <span class="authors">13. <span class="author-highlight">Yixia Li</span>, Shudong Li, Yanshan Chen, Peiyan He, Xiaobo Wu, Weihong Han.</span>
-                <span class="title">Electric Power Grid Invulnerability Under Intentional Edge-Based Attacks.</span>
-                <span class="venue"><strong>Communications in Computer and Information Science, 2019</strong></span>
-                <span class="link">[<a href="https://link.springer.com/chapter/10.1007/978-981-15-1304-6_37">paper</a>]</span>
+                <div class="paper-title">MiLoRA: Harnessing Minor Singular Components for Parameter-Efficient LLM Finetuning</div>
+                <ul class="paper-meta">
+                    <li>Hanqing Wang, <span class="author-highlight">Yixia Li</span>, Shuo Wang, Guanhua Chen, Yun Chen</li>
+                    <li><em>NAACL Main, 2025</em> [<a href="https://arxiv.org/abs/2406.09044">paper</a>][<a href="https://github.com/sufenlp/MiLoRA">code</a>]</li>
+                </ul>
+            </div>
+
+            <div class="publication-item">
+                <div class="paper-title">Enhancing Large Language Model Reasoning via Selective Critical Token Fine-Tuning</div>
+                <ul class="paper-meta">
+                    <li>Zhiwen Ruan, <span class="author-highlight">Yixia Li</span>, He Zhu, Yun Chen, Peng Li, Yang Liu, Guanhua Chen</li>
+                    <li><em>Under Review, 2025</em> [<a href="https://arxiv.org/abs/2510.10974">paper</a>]</li>
+                </ul>
+            </div>
+
+
+            <div class="publication-item">
+                <div class="paper-title">PACIT: Unlocking the Power of Examples for Better In-Context Instruction Tuning</div>
+                <ul class="paper-meta">
+                    <li>Tianci Xue, Ziqi Wang, <span class="author-highlight">Yixia Li</span>, Yun Chen, Guanhua Chen</li>
+                    <li><em>ACL Findings, 2024</em> [<a href="https://aclanthology.org/2024.findings-acl.36/">paper</a>][<a href="https://github.com/xuetianci/pacit">code</a>]</li>
+                </ul>
+            </div>
+
+            <div class="publication-item">
+                <div class="paper-title">FANNO: Augmenting High-Quality Instruction Data with Open-Sourced LLMs Only</div>
+                <ul class="paper-meta">
+                    <li>He Zhu, Yifan Ding, Yicheng Tao, Zhiwen Ruan, <span class="author-highlight">Yixia Li</span>, Wenjia Zhang, Yun Chen, Guanhua Chen</li>
+                    <li><em>ACL Findings, 2025</em> [<a href="https://openreview.net/forum?id=CULXUPIAi8&referrer=%5Bthe%20profile%20of%20Yixia%20Li%5D(%2Fprofile%3Fid%3D~Yixia_Li1)">paper</a>][<a href="https://github.com/sustech-nlp/FANNO">code</a>]</li>
+                </ul>
+            </div>
+
+            <div class="publication-item">
+                <div class="paper-title">Vis-Codex: Unified Multimodal Code Generation via Merging Vision and Coding Models</div>
+                <ul class="paper-meta">
+                    <li>Lingjie Jiang, Shaohan Huang, Xun Wu, <span class="author-highlight">Yixia Li</span>, Dongdong Zhang, Furu Wei</li>
+                    <li><em>Under Review, 2025</em> [<a href="https://www.arxiv.org/abs/2508.09945">paper</a>][<a href="https://github.com/JackLingjie/VisCodex">code</a>]</li>
+                </ul>
+            </div>
+
+            <div class="publication-item">
+                <div class="paper-title">Cantonese Natural Language Processing in the Transformers Era, Survey and Challenges</div>
+                <ul class="paper-meta">
+                    <li>Rong Xiang, Emmanuele Chersoni, <span class="author-highlight">Yixia Li</span>, Jing Li, Chu-Ren Huang</li>
+                    <li><em>Journal of Language Resources and Evaluation, 2024</em> [<a href="https://link.springer.com/article/10.1007/s10579-024-09744-w">paper</a>]</li>
+                </ul>
+            </div>
+
+            <div class="publication-item">
+                <div class="paper-title">Electric Power Grid Invulnerability Under Intentional Edge-Based Attacks</div>
+                <ul class="paper-meta">
+                    <li><span class="author-highlight">Yixia Li</span>, Shudong Li, Yanshan Chen, Peiyan He, Xiaobo Wu, Weihong Han</li>
+                    <li><em>Communications in Computer and Information Science, 2019</em> [<a href="https://link.springer.com/chapter/10.1007/978-981-15-1304-6_37">paper</a>]</li>
+                </ul>
             </div>
 
             <!-- Template for adding new publications -->
             <div class="publication-item template-entry">
-                <span class="authors">[Number]. [Author 1], <span class="author-highlight">[Your Name]</span>, [Other Authors].</span>
-                <span class="title">[Paper Title].</span>
-                <span class="venue"><strong>[Conference/Journal, Year]</strong></span>
-                <span class="link">[<a href="">paper</a>][<a href="">code</a>]</span>
+                <div class="paper-title">[Paper Title]</div>
+                <ul class="paper-meta">
+                    <li>[Author 1], <span class="author-highlight">[Your Name]</span>, [Other Authors]</li>
+                    <li><em>[Conference/Journal, Year]</em> [<a href="">paper</a>][<a href="">code</a>]</li>
+                </ul>
             </div>
         </section>
 
