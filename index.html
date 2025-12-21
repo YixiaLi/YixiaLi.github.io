@@ -39,6 +39,13 @@
             font-size: var(--base-font-size);
             line-height: 1.6;
             padding: var(--page-padding-y) var(--page-padding-x);
+            /* Prevent iOS/Android browsers from auto-inflating some text blocks on small screens */
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
+        strong {
+            font-size: inherit;
         }
 
         .container {
