@@ -29,6 +29,15 @@
             --container-padding-y: clamp(34px, 3.2vw + 14px, 60px);
             --container-padding-x: clamp(22px, 4.2vw + 8px, 80px);
 
+            /* Header (smoothly responsive, avoid breakpoint "jumps") */
+            --header-border-width: clamp(1px, 0.12vw + 0.6px, 2px);
+            --header-padding-bottom: clamp(8px, 0.9vw + 5px, 15px);
+            --header-margin-bottom: clamp(30px, 1.6vw + 20px, 40px);
+            --contact-margin-top: clamp(-80px, -12vw, 0px);
+
+            /* Section spacing */
+            --section-margin-bottom: clamp(34px, 2.2vw + 18px, 45px);
+
             --shadow-strength: 1;
         }
 
@@ -57,9 +66,9 @@
         }
 
         header {
-            border-bottom: 2px solid #000;
-            padding-bottom: 15px;
-            margin-bottom: 40px;
+            border-bottom: var(--header-border-width) solid #000;
+            padding-bottom: var(--header-padding-bottom);
+            margin-bottom: var(--header-margin-bottom);
         }
 
         h1 {
@@ -78,7 +87,7 @@
 
         .contact-info {
             text-align: right;
-            margin-top: -80px;
+            margin-top: var(--contact-margin-top);
             font-size: var(--contact-size);
             line-height: 1.8;
         }
@@ -93,7 +102,7 @@
         }
 
         section {
-            margin-bottom: 45px;
+            margin-bottom: var(--section-margin-bottom);
         }
 
         h2 {
@@ -196,27 +205,9 @@
         @media (max-width: 600px) {
         :root { --shadow-strength: 0.6; }
 
-        /* 边框更细 */
-        header {
-            border-bottom-width: 1px;   /* 原 2px */
-            padding-bottom: 8px;        /* 原 10px */
-            margin-bottom: 30px;        /* 原 40px */
-        }
-
-        .contact-info {
-            margin-top: -0px;          /* 原 -50px */
-            line-height: 1.7;
-        }
         .contact-info a {
             overflow-wrap: anywhere;    /* 防止长链接溢出 */
         }
-
-        h2 {
-            letter-spacing: 2px;        /* 原 3px */
-            margin-bottom: 16px;        /* 原 20px */
-        }
-
-        section { margin-bottom: 34px; } /* 原 45px */
 
         .entry { margin-bottom: 20px; }
         .entry-details  { margin-left: 16px; } /* 原 20px */
@@ -226,9 +217,10 @@
         .reviewer-list, .award-list { margin-left: 16px; }
         .reviewer-list li, .award-list li { margin-bottom: 6px; }
 
-        /* 关键：小屏允许标题/地点换行，避免挤压溢出 */
+        /* 小屏：宽度够就保持同一行；宽度不够时才自动换行 */
         .entry-header { flex-wrap: wrap; row-gap: 2px; }
-        .entry-location { width: 100%; text-align: left; }
+        .entry-title, .entry-subtitle { flex: 1 1 auto; min-width: 0; }
+        .entry-location { flex: 0 0 auto; white-space: nowrap; }
 
         /* 右侧日期保持在同一行，必要时断词以避免横向滚动 */
         .award-list li span[style*="float: right"] {
