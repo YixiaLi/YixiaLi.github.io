@@ -4,6 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yixia Li</title>
+    <script>
+        // Enable JS-only UI (used for Publications filter without initial flicker)
+        document.documentElement.classList.add('js');
+
+        // Render publication tags from `data-tags` (keep markup simple per entry)
+        window.addEventListener('DOMContentLoaded', () => {
+            const toSlug = (s) =>
+                s
+                    .trim()
+                    .toLowerCase()
+                    .replace(/\s+/g, '-')
+                    .replace(/[^a-z0-9-]/g, '');
+
+            const titleEls = document.querySelectorAll('.paper-title[data-tags]');
+            titleEls.forEach((titleEl) => {
+                const raw = (titleEl.getAttribute('data-tags') || '').trim();
+                if (!raw) return;
+
+                const tags = raw
+                    .split(',')
+                    .map((t) => t.trim())
+                    .filter(Boolean);
+
+                // Avoid double-render if called twice
+                titleEl.querySelectorAll('.paper-tag').forEach((n) => n.remove());
+
+                tags.forEach((tag) => {
+                    const key = toSlug(tag);
+                    const span = document.createElement('span');
+                    span.className = `paper-tag tag-${key}`;
+                    // By default, render the original tag text as-is.
+                    span.textContent = tag;
+                    titleEl.appendChild(span);
+                });
+            });
+        });
+    </script>
     <style>
         * {
             margin: 0;
@@ -183,6 +220,28 @@
             color: #111827; /* subtle deep blue-gray (near-black) */
         }
 
+        .publication-item .paper-tag {
+            display: inline-block;
+            margin-left: 5px;
+            padding: 1px 4px;
+            border: 1px solid rgba(17, 24, 39, 0.28);
+            border-radius: 3px;
+            font-size: 0.78em;
+            font-weight: normal;
+            font-style: normal;
+            letter-spacing: 0;
+            text-transform: none;
+            white-space: nowrap;
+            opacity: 0.85;
+            color: #111827;
+            line-height: 1.1;
+            vertical-align: middle;
+        }
+
+        .publication-item .paper-tag + .paper-tag {
+            margin-left: 3px;
+        }
+
         .publication-item .paper-meta {
             margin-left: 20px;
             margin-top: 4px;
@@ -195,6 +254,56 @@
 
         .publication-item .author-highlight {
             font-weight: bold;
+        }
+
+        /* Publications: Selected / Full toggle */
+        .pub-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 6px;
+        }
+
+        .pub-header h2 {
+            margin-bottom: 0;
+        }
+
+        .pub-note {
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-size: 0.85em;
+            color: #666;
+            font-style: italic;
+        }
+
+        .pub-controls {
+            display: inline-flex;
+            gap: 6px;
+            margin-bottom: 2px;
+        }
+
+        .pub-filter-btn {
+            border: 1px solid #d1d5db;
+            background: #fff;
+            color: #111827;
+            padding: 3px 9px;
+            border-radius: 999px;
+            font-size: 0.8em;
+            line-height: 1.2;
+            cursor: pointer;
+        }
+
+        .pub-filter-btn.is-active {
+            border-color: #111827;
+            background: #111827;
+            color: #fff;
+        }
+
+        .pub-filter-btn:focus {
+            outline: 2px solid #111827;
+            outline-offset: 2px;
         }
 
         .reviewer-list, .award-list {
@@ -317,6 +426,26 @@
             h1 {
                 margin-top: 0;
             }
+
+            /* Print should include full publications list */
+            #publications .pub-controls {
+                display: none !important;
+            }
+            /* IMPORTANT: do not print template placeholders */
+            #publications .template-entry {
+                display: none !important;
+            }
+
+            /* Print should include full publications list (real entries only) */
+            #publications .publication-item:not(.template-entry) {
+                display: block !important;
+                opacity: 1 !important;
+                transform: none !important;
+                margin-bottom: 15px !important;
+            }
+            #publications .publication-item:not(.template-entry)[hidden] {
+                display: block !important;
+            }
         }
 
     </style>
@@ -327,7 +456,7 @@
             <h1>YIXIA LI <span class="degree">Ph.D.</span></h1>
             <div class="contact-info">
                 <a href="https://scholar.google.com/citations?user=LrYjRNYAAAAJ&hl">Google Scholar</a><br>
-                <a href="mailto:liyixia@me.com">liyixia[AT]me[DOT]com</a><br>
+                <a href="mailto:liyixia@me.com">liyixia [AT] me [DOT] com</a><br>
                 <a href="https://liyixia.me">https://liyixia.me</a>
             </div>
         </header>
@@ -346,7 +475,7 @@
                 </div>
                 <ul class="entry-details">
                     <li><strong>Supervisor</strong>: <a href="https://ghchen.me">Dr. Guanhua Chen</a>.</li>
-                    <li><strong>Research Area</strong>: Efficient Methods in LLMs and Agentic Learning.</li>
+                    <li><strong>Research Area</strong>: Efficient Methods in LLMs, LLM Reasoning, Agentic Learning.</li>
                 </ul>
             </div>
 
@@ -356,7 +485,7 @@
                     <div class="entry-location">Hong Kong, China</div>
                 </div>
                 <div class="entry-header">
-                    <div class="entry-subtitle">M.Sc. in Computer Science (Data Science) with Distinction</div>
+                    <div class="entry-subtitle">M.Sc. in Computer Science with Distinction</div>
                     <div class="entry-location">2021 - 2023</div>
                 </div>
                 <ul class="entry-details">
@@ -396,13 +525,18 @@
         </section>
 
         <section id="publications">
-            <h2>Publications</h2>
-            <p style="margin-top: -20px; margin-bottom: 15px; font-size: 0.85em; color: #666; font-style: italic;">*
-                equal contribution</p>
+            <div class="pub-header">
+                <h2>Publications</h2>
+                <div class="pub-controls" role="group" aria-label="Publications filter">
+                    <button type="button" class="pub-filter-btn is-active" data-pub-view="selected" aria-pressed="true">Selected</button>
+                    <button type="button" class="pub-filter-btn" data-pub-view="full" aria-pressed="false">Full</button>
+                </div>
+            </div>
 
+            <p class="pub-note">* equal contribution</p>
 
-            <div class="publication-item">
-                <div class="paper-title">SPPO: Sequence-Level PPO for Long-Horizon Reasoning Tasks</div>
+            <div class="publication-item" data-selected="true">
+                <div class="paper-title" data-tags="reasoning,efficiency">SPPO: Sequence-Level PPO for Long-Horizon Reasoning Tasks</div>
                 <ul class="paper-meta">
                     <li>Tianyi Wang*, <span class="author-highlight">Yixia Li*</span>, Long Li, Yibiao Chen, Shaohan
                         Huang, Yun Chen, Peng Li, Yang Liu, Guanhua Chen</li>
@@ -410,30 +544,28 @@
                 </ul>
             </div>
 
-            <div class="publication-item">
-                <div class="paper-title">Towards Fair and Comprehensive Evaluation of Routers in Collaborative LLM
+            <div class="publication-item" data-selected="true">
+                <div class="paper-title" data-tags="efficiency">Towards Fair and Comprehensive Evaluation of Routers in Collaborative LLM
                     Systems</div>
                 <ul class="paper-meta">
                     <li>Wanxing Wu*, He Zhu*, <span class="author-highlight">Yixia Li*</span>, Lei Yang, Zhao Jiehui,
                         Hongru Wang, Jian Yang, Benyou Wang, Bingyi Jing, Guanhua Chen</li>
-                    <li><em>arXiv, 2026</em> [paper][<a
-                            href="https://github.com/zhuchichi56/Co-Bench">code</a>]</li>
+                    <li><em>arXiv, 2026</em> [paper][<a href="https://github.com/zhuchichi56/Co-Bench">code</a>]</li>
                 </ul>
             </div>
 
-            <div class="publication-item">
-                <div class="paper-title">From Word to World: Can Large Language Models be Implicit Text-based World
+            <div class="publication-item" data-selected="true">
+                <div class="paper-title" data-tags="agentic">From Word to World: Can Large Language Models be Implicit Text-based World
                     Models?</div>
                 <ul class="paper-meta">
                     <li><span class="author-highlight">Yixia Li</span>, Hongru Wang, Jiahao Qiu, Zhenfei Yin, Dongdong
                         Zhang, Cheng Qian, Zeping Li, Pony Ma, Guanhua Chen, Heng Ji, Mengdi Wang</li>
-                    <li><em>arXiv, 2025</em> [<a href="https://arxiv.org/abs/2512.18832">paper</a>][<a
-                            href="https://github.com/X1AOX1A/Word2World">code</a>]</li>
+                    <li><em>arXiv, 2025</em> [<a href="https://arxiv.org/abs/2512.18832">paper</a>][<a href="https://github.com/X1AOX1A/Word2World">code</a>]</li>
                 </ul>
             </div>
 
-            <div class="publication-item">
-                <div class="paper-title">Enhancing Large Language Model Reasoning via Selective Critical Token
+            <div class="publication-item" data-selected="true">
+                <div class="paper-title" data-tags="reasoning">Enhancing Large Language Model Reasoning via Selective Critical Token
                     Fine-Tuning</div>
                 <ul class="paper-meta">
                     <li>Zhiwen Ruan, <span class="author-highlight">Yixia Li</span>, He Zhu, Yun Chen, Peng Li, Yang
@@ -443,26 +575,25 @@
             </div>
 
             <div class="publication-item">
-                <div class="paper-title">VisCodex: Unified Multimodal Code Generation via Merging Vision and Coding
+                <div class="paper-title" data-tags="reasoning,efficiency">VisCodex: Unified Multimodal Code Generation via Merging Vision and Coding
                     Models</div>
                 <ul class="paper-meta">
                     <li>Lingjie Jiang, Shaohan Huang, Xun Wu, <span class="author-highlight">Yixia Li</span>, Dongdong
                         Zhang, Furu Wei</li>
-                    <li><em>arXiv, 2025</em> [<a href="https://www.arxiv.org/abs/2508.09945">paper</a>][<a
-                            href="https://github.com/JackLingjie/VisCodex">code</a>]</li>
+                    <li><em>arXiv, 2025</em> [<a href="https://www.arxiv.org/abs/2508.09945">paper</a>][<a href="https://github.com/JackLingjie/VisCodex">code</a>]</li>
                 </ul>
             </div>
 
-            <div class="publication-item">
-                <div class="paper-title">G2: Guided Generation for Enhanced Output Diversity in LLMs</div>
+            <div class="publication-item" data-selected="true">
+                <div class="paper-title" data-tags="efficiency">G2: Guided Generation for Enhanced Output Diversity in LLMs</div>
                 <ul class="paper-meta">
                     <li>Zhiwen Ruan, <span class="author-highlight">Yixia Li</span>, Yefeng Liu, Yun Chen, Weihua Luo, Peng Li, Yang Liu, Guanhua Chen</li>
                     <li><em>EMNLP Main, 2025</em> [<a href="https://aclanthology.org/2025.emnlp-main.713/">paper</a>][<a href="https://github.com/sustech-nlp/emnlp25-g2">code</a>]</li>
                 </ul>
             </div>
 
-            <div class="publication-item">
-                <div class="paper-title">ImPart: Importance-Aware Delta-Sparsification for Improved Model Compression and Merging in LLMs</div>
+            <div class="publication-item" data-selected="true">
+                <div class="paper-title" data-tags="efficiency">ImPart: Importance-Aware Delta-Sparsification for Improved Model Compression and Merging in LLMs</div>
                 <ul class="paper-meta">
                     <li>Yan Yang*, <span class="author-highlight">Yixia Li*</span>, Hongru Wang, Xuetao Wei, James Jianqiao Yu, Yun Chen, Guanhua Chen</li>
                     <li><em>ACL Main, 2025</em> [<a href="https://www.arxiv.org/abs/2504.13237">paper</a>][<a href="https://github.com/X1AOX1A/ImPart">code</a>]</li>
@@ -477,31 +608,31 @@
                 </ul>
             </div>
 
-            <div class="publication-item">
-                <div class="paper-title">MiLoRA: Harnessing Minor Singular Components for Parameter-Efficient LLM Finetuning</div>
+            <div class="publication-item" data-selected="true">
+                <div class="paper-title" data-tags="efficiency">MiLoRA: Harnessing Minor Singular Components for Parameter-Efficient LLM Finetuning</div>
                 <ul class="paper-meta">
                     <li>Hanqing Wang, <span class="author-highlight">Yixia Li</span>, Shuo Wang, Guanhua Chen, Yun Chen</li>
                     <li><em>NAACL Main, 2025</em> [<a href="https://arxiv.org/abs/2406.09044">paper</a>][<a href="https://github.com/sufenlp/MiLoRA">code</a>]</li>
                 </ul>
             </div>
 
-            <div class="publication-item">
-                <div class="paper-title">LayAlign: Enhancing Multilingual Reasoning in Large Language Models via Layer-Wise Adaptive Fusion and Alignment Strategy</div>
+            <div class="publication-item" data-selected="true">
+                <div class="paper-title" data-tags="reasoning,efficiency">LayAlign: Enhancing Multilingual Reasoning in Large Language Models via Layer-Wise Adaptive Fusion and Alignment Strategy</div>
                 <ul class="paper-meta">
                     <li>Zhiwen Ruan*, <span class="author-highlight">Yixia Li*</span>, He Zhu, Longyue Wang, Weihua Luo, Kaifu Zhang, Yun Chen, Guanhua Chen</li>
                     <li><em>NAACL Findings, 2025</em> [<a href="https://www.arxiv.org/abs/2502.11405">paper</a>][<a href="https://github.com/zwRuan/LayAlign">code</a>]</li>
                 </ul>
             </div>
 
-            <div class="publication-item">
-                <div class="paper-title">SeTAR: Out-of-Distribution Detection with Selective Low-Rank Approximation</div>
+            <div class="publication-item" data-selected="true">
+                <div class="paper-title" data-tags="efficiency">SeTAR: Out-of-Distribution Detection with Selective Low-Rank Approximation</div>
                 <ul class="paper-meta">
                     <li><span class="author-highlight">Yixia Li*</span>, Boya Xiong*, Guanhua Chen, Yun Chen</li>
                     <li><em>NeurIPS, 2024</em> [<a href="https://arxiv.org/abs/2406.12629">paper</a>][<a href="https://github.com/X1AOX1A/SeTAR">code</a>]</li>
                 </ul>
             </div>
 
-            <div class="publication-item">
+            <div class="publication-item" data-selected="true">
                 <div class="paper-title">UniPoll: A Unified Social Media Poll Generation Framework via Multi-Objective Optimization</div>
                 <ul class="paper-meta">
                     <li><span class="author-highlight">Yixia Li</span>, Rong Xiang, Yanlin Song, Jing Li</li>
@@ -537,12 +668,13 @@
             </div>
 
             <!-- Template for adding new publications -->
-            <div class="publication-item template-entry">
-                <div class="paper-title">[Paper Title]</div>
+            <div class="publication-item template-entry" data-selected="true">
+                <div class="paper-title" data-tags="[tags]">[Paper Title]</div>
                 <ul class="paper-meta">
                     <li>[Author 1], <span class="author-highlight">[Your Name]</span>, [Other Authors]</li>
                     <li><em>[Conference/Journal, Year]</em> [<a href="">paper</a>][<a href="">code</a>]</li>
                 </ul>
+                <!-- Optional: set data-selected="true" on .publication-item to show it in "Selected" view -->
             </div>
         </section>
 
@@ -651,5 +783,48 @@
             </ul>
         </section>
     </div>
+
+    <script>
+        (function () {
+            const root = document.documentElement;
+            const section = document.getElementById('publications');
+            if (!section) return;
+
+            const buttons = Array.from(section.querySelectorAll('.pub-filter-btn'));
+            const items = Array.from(section.querySelectorAll('.publication-item:not(.template-entry)'));
+            let currentView = null;
+
+            function desiredVisible(view, el) {
+                if (view === 'full') return true;
+                return el.dataset.selected === 'true';
+            }
+
+            function syncButtons(view) {
+                buttons.forEach((btn) => {
+                    const active = btn.dataset.pubView === view;
+                    btn.classList.toggle('is-active', active);
+                    btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+                });
+            }
+
+            function applyImmediate(view) {
+                currentView = view;
+                root.dataset.pubView = view;
+                syncButtons(view);
+                items.forEach((el) => {
+                    const show = desiredVisible(view, el);
+                    el.hidden = !show;
+                });
+            }
+
+            buttons.forEach((btn) => {
+                btn.addEventListener('click', () => applyImmediate(btn.dataset.pubView || 'selected'));
+            });
+
+            // Default: Selected. If none are marked selected, fall back to Full.
+            const hasSelected = items.some((el) => el.dataset.selected === 'true');
+            applyImmediate(hasSelected ? 'selected' : 'full');
+        })();
+    </script>
 </body>
 </html>
