@@ -252,12 +252,26 @@
             margin-bottom: 3px;
         }
 
-        /* Inline badges (GitHub stars / HF downloads) */
-        .inline-badge {
-            height: 1.2em;
-            width: auto;
-            vertical-align: -0.30em;
+        /* Inline text badges (GitHub stars / HF downloads) — print-safe */
+        .stat-badge {
+            display: inline-block;
+            font-size: 0.95em;
+            line-height: 1;
+            vertical-align: baseline;
+            margin-left: 4px;
+            color: #555;
+            text-decoration: none;
         }
+        .stat-badge .stat-icon {
+            margin-right: 1px;
+        }
+        .stat-badge .gh-star-icon {
+            color: #e3b341;          /* GitHub star yellow */
+        }
+        .stat-badge .stat-count {
+            font-variant-numeric: tabular-nums;
+        }
+        .stat-badge:hover { color: #111; }
 
         .publication-item .author-highlight {
             font-weight: bold;
@@ -571,9 +585,8 @@
                     <li><em>Under Review, 2026</em>
                         [<a href="https://arxiv.org/abs/2512.18832">paper</a>]
                         [<a href="https://github.com/X1AOX1A/Word2World">code</a>]
-                        <a href="https://github.com/X1AOX1A/Word2World"><img class="inline-badge" src="https://img.shields.io/github/stars/X1AOX1A/Word2World?style=social" loading="lazy"/></a>
-                        <a href="https://huggingface.co/X1AOX1A/WorldModel-Webshop-Qwen2.5-7B">
-                        <img class="inline-badge" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/models/X1AOX1A/WorldModel-Webshop-Qwen2.5-7B&amp;query=$.downloads&amp;label=HF%20downloads&amp;logo=huggingface&amp;logoColor=FFD21E" loading="lazy"/></a></li>
+                        <a class="stat-badge" href="https://github.com/X1AOX1A/Word2World" data-gh-stars="X1AOX1A/Word2World"><span class="stat-icon gh-star-icon">★</span><span class="stat-count"></span></a>
+                        <a class="stat-badge" href="https://huggingface.co/X1AOX1A/WorldModel-Webshop-Qwen2.5-7B" data-hf-downloads="X1AOX1A/WorldModel-Webshop-Qwen2.5-7B"><span class="stat-icon">🤗</span><span class="stat-count"></span></a></li>
                 </ul>
             </div>
 
@@ -750,7 +763,7 @@
                     <div class="entry-location">Hong Kong, China</div>
                 </div>
                 <div class="entry-header">
-                    <div class="entry-subtitle">Mentor: <a href="http://www4.comp.polyu.edu.hk/~jing1li/">Dr. Jing Li</a></div>
+                    <div class="entry-subtitle">Mentor: <a href="http://www4.comp.polyu.edu.hk/~jing1li/">Prof. Jing Li</a></div>
                     <div class="entry-location">2022.08 - 2023.07</div>
                 </div>
                 <ul class="entry-details">
@@ -876,6 +889,40 @@
             // Default: Selected. If none are marked selected, fall back to Full.
             const hasSelected = items.some((el) => el.dataset.selected === 'true');
             applyImmediate(hasSelected ? 'selected' : 'full');
+        })();
+
+        /* ── Fetch GitHub stars & HF downloads, render as text ── */
+        (function () {
+            function fmt(n) {
+                if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+                return String(n);
+            }
+
+            // GitHub stars
+            document.querySelectorAll('[data-gh-stars]').forEach(function (el) {
+                var repo = el.getAttribute('data-gh-stars');
+                fetch('https://api.github.com/repos/' + repo)
+                    .then(function (r) { return r.json(); })
+                    .then(function (d) {
+                        if (d.stargazers_count != null) {
+                            el.querySelector('.stat-count').textContent = fmt(d.stargazers_count);
+                        }
+                    })
+                    .catch(function () {});
+            });
+
+            // Hugging Face downloads
+            document.querySelectorAll('[data-hf-downloads]').forEach(function (el) {
+                var model = el.getAttribute('data-hf-downloads');
+                fetch('https://huggingface.co/api/models/' + model)
+                    .then(function (r) { return r.json(); })
+                    .then(function (d) {
+                        if (d.downloads != null) {
+                            el.querySelector('.stat-count').textContent = fmt(d.downloads);
+                        }
+                    })
+                    .catch(function () {});
+            });
         })();
     </script>
 </body>
