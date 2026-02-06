@@ -252,6 +252,13 @@
             margin-bottom: 3px;
         }
 
+        /* Inline badges (GitHub stars / HF downloads) */
+        .inline-badge {
+            height: 1.2em;
+            width: auto;
+            vertical-align: -0.30em;
+        }
+
         .publication-item .author-highlight {
             font-weight: bold;
             color: #111827;
@@ -561,7 +568,12 @@
                 <ul class="paper-meta">
                     <li><span class="author-highlight">Yixia Li</span>, Hongru Wang, Jiahao Qiu, Zhenfei Yin, Dongdong
                         Zhang, Cheng Qian, Zeping Li, Pony Ma, Guanhua Chen, Heng Ji, Mengdi Wang</li>
-                    <li><em>Under Review, 2026</em> [<a href="https://arxiv.org/abs/2512.18832">paper</a>][<a href="https://github.com/X1AOX1A/Word2World">code</a>]</li>
+                    <li><em>Under Review, 2026</em>
+                        [<a href="https://arxiv.org/abs/2512.18832">paper</a>]
+                        [<a href="https://github.com/X1AOX1A/Word2World">code</a>]
+                        <a href="https://github.com/X1AOX1A/Word2World"><img class="inline-badge" src="https://img.shields.io/github/stars/X1AOX1A/Word2World?style=social" loading="lazy"/></a>
+                        <a href="https://huggingface.co/X1AOX1A/WorldModel-Webshop-Qwen2.5-7B">
+                        <img class="inline-badge" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/models/X1AOX1A/WorldModel-Webshop-Qwen2.5-7B&amp;query=$.downloads&amp;label=HF%20downloads&amp;logo=huggingface&amp;logoColor=FFD21E" loading="lazy"/></a></li>
                 </ul>
             </div>
 
