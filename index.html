@@ -232,7 +232,6 @@
             letter-spacing: 0;
             text-transform: none;
             white-space: nowrap;
-            opacity: 0.85;
             color: #111827;
             line-height: 1.1;
             vertical-align: middle;
@@ -240,6 +239,47 @@
 
         .publication-item .paper-tag + .paper-tag {
             margin-left: 3px;
+        }
+
+        /* Per-tag colors — colored border + text, no background fill */
+        .publication-item .tag-post-train {
+            border-color: hsl(220, 50%, 52%);
+            color: hsl(220, 50%, 40%);
+        }
+
+        .publication-item .tag-efficiency {
+            border-color: hsl(150, 45%, 42%);
+            color: hsl(150, 45%, 32%);
+        }
+
+        .publication-item .tag-agentic {
+            border-color: hsl(30, 55%, 48%);
+            color: hsl(30, 55%, 36%);
+        }
+
+        .publication-item .tag-reasoning {
+            border-color: hsl(270, 40%, 52%);
+            color: hsl(270, 40%, 40%);
+        }
+
+        .publication-item .tag-multimodal {
+            border-color: hsl(0, 45%, 50%);
+            color: hsl(0, 45%, 38%);
+        }
+
+        .publication-item .tag-data {
+            border-color: hsl(190, 50%, 42%);
+            color: hsl(190, 50%, 32%);
+        }
+
+        .publication-item .tag-alignment {
+            border-color: hsl(80, 40%, 42%);
+            color: hsl(80, 40%, 32%);
+        }
+
+        .publication-item .tag-safety {
+            border-color: hsl(15, 50%, 48%);
+            color: hsl(15, 50%, 36%);
         }
 
         .publication-item .paper-meta {
@@ -567,7 +607,7 @@
             </div>
 
             <div class="publication-item">
-                <div class="paper-title" data-tags="post-train,efficiency">VisCodex: Unified Multimodal Code Generation via Merging Vision and Coding
+                <div class="paper-title" data-tags="post-train">VisCodex: Unified Multimodal Code Generation via Merging Vision and Coding
                     Models</div>
                 <ul class="paper-meta">
                     <li>Lingjie Jiang, Shaohan Huang, Xun Wu, <span class="author-highlight">Yixia Li</span>, Dongdong
@@ -598,7 +638,7 @@
             </div>
 
             <div class="publication-item" data-selected="true">
-                <div class="paper-title" data-tags="post-train,efficiency">SPPO: Sequence-Level PPO for Long-Horizon Reasoning Tasks</div>
+                <div class="paper-title" data-tags="post-train">SPPO: Sequence-Level PPO for Long-Horizon Reasoning Tasks</div>
                 <ul class="paper-meta">
                     <li>Tianyi Wang*, <span class="author-highlight">Yixia Li*</span>, Long Li, Yibiao Chen, Shaohan
                         Huang, Yun Chen, Peng Li, Yang Liu, Guanhua Chen</li>
@@ -642,7 +682,7 @@
             </div>
 
             <div class="publication-item" data-selected="true">
-                <div class="paper-title" data-tags="post-train,efficiency">Enhancing Large Language Model Reasoning via Selective Critical Token
+                <div class="paper-title" data-tags="post-train">Enhancing Large Language Model Reasoning via Selective Critical Token
                     Fine-Tuning</div>
                 <ul class="paper-meta">
                     <li>Zhiwen Ruan, <span class="author-highlight">Yixia Li</span>, He Zhu, Yun Chen, Peng Li, Yang
@@ -685,7 +725,7 @@
             </div>
 
             <div class="publication-item" data-selected="true">
-                <div class="paper-title" data-tags="post-train,efficiency">LayAlign: Enhancing Multilingual Reasoning in Large Language Models via Layer-Wise Adaptive Fusion and Alignment Strategy</div>
+                <div class="paper-title" data-tags="post-train">LayAlign: Enhancing Multilingual Reasoning in Large Language Models via Layer-Wise Adaptive Fusion and Alignment Strategy</div>
                 <ul class="paper-meta">
                     <li>Zhiwen Ruan*, <span class="author-highlight">Yixia Li*</span>, He Zhu, Longyue Wang, Weihua Luo, Kaifu Zhang, Yun Chen, Guanhua Chen</li>
                     <li><em>NAACL Findings, 2025</em> [<a href="https://www.arxiv.org/abs/2502.11405">paper</a>][<a href="https://github.com/zwRuan/LayAlign">code</a>]</li>
@@ -701,7 +741,7 @@
             </div>
 
             <div class="publication-item" data-selected="true">
-                <div class="paper-title">UniPoll: A Unified Social Media Poll Generation Framework via Multi-Objective Optimization</div>
+                <div class="paper-title" data-tags="post-train">UniPoll: A Unified Social Media Poll Generation Framework via Multi-Objective Optimization</div>
                 <ul class="paper-meta">
                     <li><span class="author-highlight">Yixia Li</span>, Rong Xiang, Yanlin Song, Jing Li</li>
                     <li><em>TNNLS, 2024</em> [<a href="https://arxiv.org/abs/2306.06851">paper</a>][<a href="https://github.com/X1AOX1A/UniPoll">code</a>]</li>
@@ -709,7 +749,7 @@
             </div>
 
             <div class="publication-item">
-                <div class="paper-title">PACIT: Unlocking the Power of Examples for Better In-Context Instruction Tuning</div>
+                <div class="paper-title" data-tags="post-train">PACIT: Unlocking the Power of Examples for Better In-Context Instruction Tuning</div>
                 <ul class="paper-meta">
                     <li>Tianci Xue, Ziqi Wang, <span class="author-highlight">Yixia Li</span>, Yun Chen, Guanhua Chen</li>
                     <li><em>ACL Findings, 2024</em> [<a href="https://aclanthology.org/2024.findings-acl.36/">paper</a>][<a href="https://github.com/xuetianci/pacit">code</a>]</li>
