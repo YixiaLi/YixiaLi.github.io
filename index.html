@@ -368,6 +368,18 @@
             outline-offset: 2px;
         }
 
+        /* Publications: year dividers */
+        #publications .pub-year {
+            margin: 18px 0 10px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+            font-size: var(--entry-font-size);
+            font-style: normal;
+            font-weight: 600;
+            letter-spacing: 0;
+            color: #111827;
+        }
+
         .reviewer-list, .award-list {
             font-size: var(--entry-font-size);
             margin-left: 20px;
@@ -518,10 +530,34 @@
             <h1>YIXIA LI <span class="degree">Ph.D.</span></h1>
             <div class="contact-info">
                 <a href="https://scholar.google.com/citations?user=LrYjRNYAAAAJ&hl">Google Scholar</a><br>
-                <a href="mailto:liyixia@me.com">liyixia [AT] me [DOT] com</a><br>
+                <a href="mailto:liyixia@me.com">liyixia@me.com</a><br>
                 <a href="https://liyixia.me">https://liyixia.me</a>
             </div>
         </header>
+
+        <section id="about">
+            <h2>About</h2>
+            <div class="entry-info">
+                I am a Ph.D. candidate at Southern University of Science and Technology, supervised by <a href="https://ghchen.me">Dr. Guanhua Chen</a>. I am currently a research intern with the GenAI group at Microsoft Research Asia. My research focuses on making large language models more capable, efficient, and generalizable.
+            </div>
+            <div class="entry-info" style="margin-top:12px;"><strong>Research Interests</strong></div>
+            <ul class="entry-details">
+                <li><strong>Agentic Learning</strong> &mdash;
+                    Experience Learning;
+                    LLM-as-World-Model (<a href="https://arxiv.org/abs/2512.18832" style="color:inherit;text-decoration:none"><em>From Word to World</em></a>)
+                </li>
+                <li><strong>LLM Post-training</strong> &mdash;
+                    LLM Reasoning (<em>SPPO</em>, <a href="https://arxiv.org/abs/2510.10974" style="color:inherit;text-decoration:none"><em>CFT</em></a>);
+                    Multi-Modal &amp; Multi-lingual (<a href="https://www.arxiv.org/abs/2502.11405" style="color:inherit;text-decoration:none"><em>LayAlign</em></a>, <em>VFA</em>)
+                </li>
+                <li><strong>Efficient Methods in LLMs</strong> &mdash;
+                    Low-Rank Adaptation (<a href="https://arxiv.org/abs/2406.09044" style="color:inherit;text-decoration:none"><em>MiLoRA</em></a>, <a href="https://arxiv.org/abs/2406.12629" style="color:inherit;text-decoration:none"><em>SeTAR</em></a>);
+                    Model Merging &amp; Quantization (<em>VFA</em>, <a href="https://www.arxiv.org/abs/2504.13237" style="color:inherit;text-decoration:none"><em>ImPart</em></a>);
+                    Model Routing (<a href="https://arxiv.org/abs/2602.11877" style="color:inherit;text-decoration:none"><em>RouterXBench</em></a>);
+                    Decoding Methods (<a href="https://aclanthology.org/2025.emnlp-main.713/" style="color:inherit;text-decoration:none"><em>G2</em></a>)
+                </li>
+            </ul>
+        </section>
 
         <section id="education">
             <h2>Education</h2>
@@ -596,6 +632,9 @@
             </div>
 
             <p class="pub-note">* equal contribution</p>
+
+            <!-- 2026 -->
+            <h3 class="pub-year">2026</h3>
 
             <div class="publication-item">
                 <div class="paper-title" data-tags="post-train">From Abstract to Contextual: What LLMs Still Cannot Do in Mathematics
@@ -681,6 +720,9 @@
                 </ul>
             </div>
 
+            <!-- 2025 -->
+            <h3 class="pub-year">2025</h3>
+
             <div class="publication-item" data-selected="true">
                 <div class="paper-title" data-tags="post-train">Enhancing Large Language Model Reasoning via Selective Critical Token
                     Fine-Tuning</div>
@@ -732,6 +774,9 @@
                 </ul>
             </div>
 
+            <!-- 2024 -->
+            <h3 class="pub-year">2024</h3>
+
             <div class="publication-item" data-selected="true">
                 <div class="paper-title" data-tags="efficiency">SeTAR: Out-of-Distribution Detection with Selective Low-Rank Approximation</div>
                 <ul class="paper-meta">
@@ -756,9 +801,6 @@
                 </ul>
             </div>
 
-
-
-
             <div class="publication-item">
                 <div class="paper-title">Cantonese Natural Language Processing in the Transformers Era, Survey and Challenges</div>
                 <ul class="paper-meta">
@@ -767,13 +809,16 @@
                 </ul>
             </div>
 
+            <!-- 2019 -->
+            <!-- <h3 class="pub-year">2019</h3>
+
             <div class="publication-item">
                 <div class="paper-title">Electric Power Grid Invulnerability Under Intentional Edge-Based Attacks</div>
                 <ul class="paper-meta">
                     <li><span class="author-highlight">Yixia Li</span>, Shudong Li, Yanshan Chen, Peiyan He, Xiaobo Wu, Weihong Han</li>
                     <li><em>Communications in Computer and Information Science, 2019</em> [<a href="https://link.springer.com/chapter/10.1007/978-981-15-1304-6_37">paper</a>]</li>
                 </ul>
-            </div>
+            </div> -->
 
             <!-- Template for adding new publications -->
             <div class="publication-item template-entry" data-selected="true">
