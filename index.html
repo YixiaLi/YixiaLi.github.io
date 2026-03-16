@@ -557,17 +557,17 @@
             <ul class="entry-details">
                 <li><strong>Agentic Learning</strong> &mdash;
                     Experience Learning;
-                    LLM-as-World-Model (<a href="https://arxiv.org/abs/2512.18832" style="color:inherit;text-decoration:none"><em>From Word to World</em></a>)
+                    LLM-as-World-Model (<a href="https://arxiv.org/abs/2512.18832"><em>From Word to World</em></a>)
                 </li>
                 <li><strong>LLM Post-training</strong> &mdash;
-                    LLM Reasoning (<em>SPPO</em>, <a href="https://arxiv.org/abs/2510.10974" style="color:inherit;text-decoration:none"><em>CFT</em></a>);
-                    Multi-Modal &amp; Multi-lingual (<a href="https://www.arxiv.org/abs/2502.11405" style="color:inherit;text-decoration:none"><em>LayAlign</em></a>, <em>VFA</em>)
+                    LLM Reasoning (<em>SPPO</em>, <a href="https://arxiv.org/abs/2510.10974"><em>CFT</em></a>);
+                    Multi-Modal &amp; Multi-lingual (<a href="https://www.arxiv.org/abs/2502.11405"><em>LayAlign</em></a>, <em>VFA</em>)
                 </li>
                 <li><strong>Efficient Methods in LLMs</strong> &mdash;
-                    Low-Rank Adaptation (<a href="https://arxiv.org/abs/2406.09044" style="color:inherit;text-decoration:none"><em>MiLoRA</em></a>, <a href="https://arxiv.org/abs/2406.12629" style="color:inherit;text-decoration:none"><em>SeTAR</em></a>);
-                    Model Merging &amp; Quantization (<em>VFA</em>, <a href="https://www.arxiv.org/abs/2504.13237" style="color:inherit;text-decoration:none"><em>ImPart</em></a>);
-                    Model Routing (<a href="https://arxiv.org/abs/2602.11877" style="color:inherit;text-decoration:none"><em>RouterXBench</em></a>);
-                    Decoding Methods (<a href="https://aclanthology.org/2025.emnlp-main.713/" style="color:inherit;text-decoration:none"><em>G2</em></a>)
+                    Low-Rank Adaptation (<a href="https://arxiv.org/abs/2406.09044"><em>MiLoRA</em></a>, <a href="https://arxiv.org/abs/2406.12629"><em>SeTAR</em></a>);
+                    Model Merging &amp; Quantization (<em>VFA</em>, <a href="https://www.arxiv.org/abs/2504.13237"><em>ImPart</em></a>);
+                    Model Routing (<a href="https://arxiv.org/abs/2602.11877"><em>RouterXBench</em></a>);
+                    Decoding Methods (<a href="https://aclanthology.org/2025.emnlp-main.713/"><em>G2</em></a>)
                 </li>
             </ul>
         </section>
@@ -877,7 +877,7 @@
                 </ul>
             </div>
 
-            <div class="entry">
+            <!-- <div class="entry">
                 <div class="entry-header">
                     <div class="entry-title">Huawei</div>
                     <div class="entry-location">Shenzhen, China</div>
@@ -891,7 +891,7 @@
                     <li>Knowledge-enhanced Dialogue System</li>
                     <li>Chinese ASR Entity Correction</li>
                 </ul>
-            </div>
+            </div> -->
 
             <!-- Template for adding new internships -->
             <div class="entry template-entry">
@@ -1018,13 +1018,14 @@
             });
 
             // Hugging Face downloads
+            // https://huggingface.co/api/models/Repo/ModelName?expand[]=downloads&expand[]=downloadsAllTime
             document.querySelectorAll('[data-hf-downloads]').forEach(function (el) {
                 var model = el.getAttribute('data-hf-downloads');
-                fetch('https://huggingface.co/api/models/' + model)
+                fetch('https://huggingface.co/api/models/' + model + '?expand[]=downloads&expand[]=downloadsAllTime')
                     .then(function (r) { return r.json(); })
                     .then(function (d) {
-                        if (d.downloads != null) {
-                            el.querySelector('.stat-count').textContent = fmt(d.downloads);
+                        if (d.downloadsAllTime != null) {
+                            el.querySelector('.stat-count').textContent = fmt(d.downloadsAllTime);
                         }
                     })
                     .catch(function () {});
